@@ -4,17 +4,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_event_list.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
-import shishir.nitmeghalaya.`in`.shishir2019.viewholder.EventsListItemViewHolder
+
+
+class EventsListAdapter(private val ItemList: ArrayList<EventCard>): RecyclerView.Adapter<EventsListAdapter.ViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
+        return ViewHolder(v)
+    }
+
+    override fun getItemCount(): Int {
+        return ItemList.size
+    }
+
+    override fun onBindViewHolder(holder: EventsListAdapter.ViewHolder, position: Int) {
+        val item = ItemList[position]
+
+        holder.type.text = item.type
+        holder.title.text = item.title
+    }
+
+    class ViewHolder(view:View): RecyclerView.ViewHolder(view){
+        val type = view.findViewById(R.id.item_type) as TextView
+        val title = view.findViewById(R.id.item_title) as TextView
+    }
+}
+
+
+
+
 
 
 /**
  * Created by Devansh on 24/1/19.
- */
 
 class EventsListAdapter(private val myDataset: Array<EventCard>) :
     RecyclerView.Adapter<EventsListAdapter.MyViewHolder>() {
@@ -53,3 +77,4 @@ class EventsListAdapter(private val myDataset: Array<EventCard>) :
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 }
+ */
