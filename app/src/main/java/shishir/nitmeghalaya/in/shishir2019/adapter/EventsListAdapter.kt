@@ -1,15 +1,20 @@
 package shishir.nitmeghalaya.`in`.shishir2019.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import shishir.nitmeghalaya.`in`.shishir2019.R
+import shishir.nitmeghalaya.`in`.shishir2019.`interface`.EventItemClick
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
 
 
-class EventsListAdapter(private val ItemList: ArrayList<EventCard>): RecyclerView.Adapter<EventsListAdapter.ViewHolder>(){
+class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Context): RecyclerView.Adapter<EventsListAdapter.ViewHolder>(){
+
+    private val mcontext = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
         return ViewHolder(v)
@@ -21,14 +26,30 @@ class EventsListAdapter(private val ItemList: ArrayList<EventCard>): RecyclerVie
 
     override fun onBindViewHolder(holder: EventsListAdapter.ViewHolder, position: Int) {
         val item = ItemList[position]
-
         holder.type.text = item.type
         holder.title.text = item.title
+        holder.setOnEventItemClick(object: EventItemClick{
+            override fun onEventItemClick(view: View, pos: Int){
+                Toast.makeText(mcontext,"chigen",Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
-    class ViewHolder(view:View): RecyclerView.ViewHolder(view){
+    class ViewHolder(view:View): RecyclerView.ViewHolder(view),View.OnClickListener{
         val type = view.findViewById(R.id.item_type) as TextView
         val title = view.findViewById(R.id.item_title) as TextView
+        var eventItemClickListener:EventItemClick?=null
+        init{
+            view.setOnClickListener(this)
+        }
+
+        fun setOnEventItemClick(itemClickListener: EventItemClick){
+            this.eventItemClickListener = itemClickListener
+        }
+
+        override fun onClick(p0:View){
+            this.eventItemClickListener?.onEventItemClick(p0,adapterPosition)
+        }
     }
 }
 
