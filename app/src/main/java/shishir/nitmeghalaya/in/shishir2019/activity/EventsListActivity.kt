@@ -26,7 +26,7 @@ class EventsListActivity : AppCompatActivity(){
             Items.add(EventCard("Type " + i, "Title " + i))
 
         val adapter = EventsListAdapter(Items)
-
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
         }
 }
