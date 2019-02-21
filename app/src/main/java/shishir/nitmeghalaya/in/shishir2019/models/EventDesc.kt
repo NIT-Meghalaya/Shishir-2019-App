@@ -1,4 +1,3 @@
 package shishir.nitmeghalaya.`in`.shishir2019.models
 
-class EventDesc {
-}
+data class EventDesc(val title:String, val Desc: String)
