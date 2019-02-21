@@ -1,14 +1,14 @@
 package shishir.nitmeghalaya.`in`.shishir2019.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import shishir.nitmeghalaya.`in`.shishir2019.R
-import shishir.nitmeghalaya.`in`.shishir2019.`interface`.EventItemClick
+import shishir.nitmeghalaya.`in`.shishir2019.activity.EventsDetailActivity
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
 
 
@@ -28,27 +28,17 @@ class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Con
         val item = ItemList[position]
         holder.type.text = item.type
         holder.title.text = item.title
-        holder.setOnEventItemClick(object: EventItemClick{
-            override fun onEventItemClick(view: View, pos: Int){
-                Toast.makeText(mcontext,"chigen",Toast.LENGTH_LONG).show()
-            }
-        })
     }
 
-    class ViewHolder(view:View): RecyclerView.ViewHolder(view),View.OnClickListener{
+    class ViewHolder(view:View): RecyclerView.ViewHolder(view){
         val type = view.findViewById(R.id.item_type) as TextView
         val title = view.findViewById(R.id.item_title) as TextView
-        var eventItemClickListener:EventItemClick?=null
         init{
-            view.setOnClickListener(this)
-        }
+            view.setOnClickListener {
+                val intent = Intent(view.context, EventsDetailActivity::class.java)
 
-        fun setOnEventItemClick(itemClickListener: EventItemClick){
-            this.eventItemClickListener = itemClickListener
-        }
-
-        override fun onClick(p0:View){
-            this.eventItemClickListener?.onEventItemClick(p0,adapterPosition)
+                view.context.startActivity(intent)
+            }
         }
     }
 }
