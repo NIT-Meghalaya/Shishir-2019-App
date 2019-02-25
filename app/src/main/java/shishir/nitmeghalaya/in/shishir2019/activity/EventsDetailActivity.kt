@@ -13,7 +13,6 @@ class EventsDetailActivity:AppCompatActivity(){
 
 
         val back = findViewById(R.id.backbutton) as ImageView
-
         back.setOnClickListener {finish()}
     }
 }
