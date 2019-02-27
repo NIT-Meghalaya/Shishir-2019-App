@@ -9,8 +9,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventsListActivity">
-            android:launchMode="singleTop"
+        <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventsListActivity"
+                  android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventsDetailActivity">
+        <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventsDetailActivity"
             android:label = "Event Details"
             android:launchMode = "singleTop">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
