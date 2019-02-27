@@ -17,7 +17,7 @@ class EventsListActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_list)
 
-        val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
+        val recyclerView = findViewById(R.id.recyclerViewEvent) as RecyclerView
 
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 

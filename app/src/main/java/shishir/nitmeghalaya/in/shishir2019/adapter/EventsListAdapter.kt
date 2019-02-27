@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import shishir.nitmeghalaya.`in`.shishir2019.R
-import shishir.nitmeghalaya.`in`.shishir2019.activity.EventsDetailActivity
+import shishir.nitmeghalaya.`in`.shishir2019.activity.EventDescActivity
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
 
 
 class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Context): RecyclerView.Adapter<EventsListAdapter.ViewHolder>(){
 
-    private val mcontext = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
         return ViewHolder(v)
@@ -34,18 +33,18 @@ class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Con
         val type = view.findViewById(R.id.item_type) as TextView
         val title = view.findViewById(R.id.item_title) as TextView
         init{
+            val position = adapterPosition as String
             view.setOnClickListener {
-                val intent = Intent(view.context, EventsDetailActivity::class.java)
-
+                val intent = Intent(view.context, EventDescActivity::class.java)
+                intent.putExtra("Title", "title: " + position)
+                intent.putExtra("Desc", "desc: " + position)
+                intent.putExtra("Venue","vemue: " + position)
+                intent.putExtra("Date", "date: " + position)
                 view.context.startActivity(intent)
             }
         }
     }
 }
-
-
-
-
 
 
 /**
