@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import shishir.nitmeghalaya.`in`.shishir2019.R
 
-class EventDescActivity:AppCompatActivity(){
+class EventDetailActivity:AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

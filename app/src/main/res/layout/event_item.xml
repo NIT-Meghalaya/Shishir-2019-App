@@ -12,7 +12,7 @@
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/samplebg"
+            tools:srcCompat="@drawable/samplebg"
             android:scaleType="fitXY"
             android:id="@+id/eventListItemImage" />
 
@@ -38,6 +38,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

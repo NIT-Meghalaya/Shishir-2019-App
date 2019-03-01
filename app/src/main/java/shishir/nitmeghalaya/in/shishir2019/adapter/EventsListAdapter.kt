@@ -9,7 +9,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.EventsListItemViewHolder
 
 class EventsListAdapter(private val itemList: ArrayList<EventCard>, context: Context)
-    : RecyclerView.Adapter<EventsListItemViewHolder>(){
+    : RecyclerView.Adapter<EventsListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsListItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
