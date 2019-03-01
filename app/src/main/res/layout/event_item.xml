@@ -12,25 +12,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/samplebg"
-            android:id="@+id/background_image"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:id="@+id/eventListItemImage" />
+
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/item_type"
+            android:id="@+id/eventListItemType"
             android:textColor="@color/WhiteTransparent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/item_title"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/eventListItemTitle"/>
+
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/item_title"
-            android:textSize="24dp" android:textColor="#ffffffff" android:layout_marginStart="24dp"
+            android:id="@+id/eventListItemTitle"
+            android:textSize="24dp"
+            android:textColor="#ffffffff"
+            android:layout_marginStart="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
