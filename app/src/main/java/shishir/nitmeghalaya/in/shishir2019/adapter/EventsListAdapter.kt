@@ -8,7 +8,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.EventsListItemViewHolder
 
-class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Context)
+class EventsListAdapter(private val itemList: ArrayList<EventCard>, context: Context)
     : RecyclerView.Adapter<EventsListItemViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsListItemViewHolder {
@@ -17,11 +17,11 @@ class EventsListAdapter(private val ItemList: ArrayList<EventCard>, context: Con
     }
 
     override fun getItemCount(): Int {
-        return ItemList.size
+        return itemList.size
     }
 
     override fun onBindViewHolder(holder: EventsListItemViewHolder, position: Int) {
-        val item = ItemList[position]
+        val item = itemList[position]
         holder.bind(item)
     }
 

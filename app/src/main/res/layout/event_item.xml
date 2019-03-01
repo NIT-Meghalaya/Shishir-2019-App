@@ -16,7 +16,7 @@
             android:id="@+id/eventListItemImage" />
 
     <TextView
-            android:text="TextView"
+            tools:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eventListItemType"
@@ -26,11 +26,11 @@
             app:layout_constraintBottom_toTopOf="@+id/eventListItemTitle"/>
 
     <TextView
-            android:text="TextView"
+            tools:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eventListItemTitle"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textColor="#ffffffff"
             android:layout_marginStart="24dp"
             app:layout_constraintStart_toStartOf="parent"
