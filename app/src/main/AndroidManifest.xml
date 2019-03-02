@@ -17,8 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        
-        <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventDetailActivity">
+
         <activity android:name="shishir.nitmeghalaya.in.shishir2019.activity.EventDetailActivity"
             android:label = "Event Details"
             android:launchMode = "singleTop">

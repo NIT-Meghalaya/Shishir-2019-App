@@ -11,9 +11,9 @@
 
     <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             tools:srcCompat="@drawable/samplebg"
-            android:scaleType="fitXY"
             android:id="@+id/eventListItemImage" />
 
     <TextView
