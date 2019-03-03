@@ -12,6 +12,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.activity.EventDetailActivity
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import android.graphics.BitmapFactory
+import android.widget.ImageView
 
 /**
  * Created by Devansh on 24/1/19.
@@ -20,12 +21,14 @@ import android.graphics.BitmapFactory
 class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     private val context = view.context
+    public lateinit var image: ImageView
 
     fun bind(item: ShishirEvent) {
+        image = view.eventListItemImage
         view.apply {
             eventListItemTitle.text = item.name
-            //eventListItemImage.setImageResource(R.drawable.samplebg)
-            Glide.with(this).load(R.drawable.samplebg).into(eventListItemImage)
+           // eventListItemImage.setImageResource(R.drawable.samplebg)
+            //Glide.with(view.context).load(R.drawable.samplebg).into(eventListItemImage)
             setOnClickListener {
                 val intent = Intent(view.context, EventDetailActivity::class.java)
                 view.context.startActivity(intent)

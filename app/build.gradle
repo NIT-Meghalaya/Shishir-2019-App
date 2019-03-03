@@ -57,8 +57,15 @@ dependencies {
     //Firebase Auth
     implementation 'com.google.firebase:firebase-auth:16.1.0'
 
+    //Firestore
+    implementation 'com.google.firebase:firebase-firestore:18.1.0'
+
     //Palette API
     implementation 'androidx.palette:palette:1.0.0'
+
+    //Anko Common
+    implementation "org.jetbrains.anko:anko-common:0.10.8"
 }
+
 //FireBase
 apply plugin: 'com.google.gms.google-services'
