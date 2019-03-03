@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_events_list.*
-import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventsListAdapter
@@ -15,7 +14,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.DBConsts
 
 
-class EventsListActivity : AppCompatActivity(), AnkoLogger {
+class EventsListActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -23,7 +22,7 @@ class EventsListActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_list)
         eventsRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        eventsRecyclerView.recycledViewPool.setMaxRecycledViews(0, 0)
+        //eventsRecyclerView.recycledViewPool.setMaxRecycledViews(0, 0)
 
         val eventsList = ArrayList<ShishirEvent>()
 
@@ -41,6 +40,5 @@ class EventsListActivity : AppCompatActivity(), AnkoLogger {
             .addOnFailureListener {
                 toast("Error!")
             }
-
     }
 }

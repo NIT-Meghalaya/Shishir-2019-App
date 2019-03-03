@@ -46,18 +46,20 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
                 view.context.startActivity(intent)
             }
 
-//            if (android.os.Build.VERSION.SDK_INT >= 23)
-//                eventListItemImage.foreground = createForegroundGradient()
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                //Putting this condition check to improve performance
+                if (item.foregroundGradient == null)
+                    item.foregroundGradient = createForegroundGradient()
+                eventListItemImage.foreground = item.foregroundGradient
+            }
+
         }
     }
 
     private fun createForegroundGradient(): GradientDrawable {
 
-
         val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
-
         val palette = Palette.from(eventImageBitmap).generate()
-
         var color: Int
 
         color = palette.getMutedColor(ContextCompat.getColor(context, R.color.black))
@@ -67,13 +69,8 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
                 color = palette.getVibrantColor(ContextCompat.getColor(context, R.color.black))
         }
 
-        //color = palette.getVibrantColor(ContextCompat.getColor(context, R.color.black))
-
         val gradientColorsArray: IntArray = intArrayOf(
-            getColorWithAddedAlpha(color, 0xff),
-            Color.TRANSPARENT,
-            Color.TRANSPARENT
-        )
+            getColorWithAddedAlpha(color, 0xff), Color.TRANSPARENT, Color.TRANSPARENT)
 
         return GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColorsArray)
     }
