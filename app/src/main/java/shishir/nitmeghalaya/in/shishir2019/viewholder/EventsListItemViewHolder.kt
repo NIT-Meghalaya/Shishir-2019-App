@@ -12,7 +12,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.activity.EventDetailActivity
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import android.graphics.BitmapFactory
-import android.widget.ImageView
+import android.graphics.Color
 
 /**
  * Created by Devansh on 24/1/19.
@@ -31,8 +31,8 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
                 view.context.startActivity(intent)
             }
 
-//            if (android.os.Build.VERSION.SDK_INT >= 23)
-//                foreground = createForegroundGradient()
+            if (android.os.Build.VERSION.SDK_INT >= 23)
+                foreground = createForegroundGradient()
         }
     }
 
@@ -41,12 +41,31 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
 
         val palette = Palette.from(eventImageBitmap).generate()
 
+        var color: Int
+
+        color = palette.getMutedColor(ContextCompat.getColor(context, R.color.black))
+        if (color == Color.BLACK) {
+            color = palette.getLightMutedColor(ContextCompat.getColor(context, R.color.black))
+            if(color == Color.BLACK)
+                color = palette.getVibrantColor(ContextCompat.getColor(context, R.color.black))
+        }
+
         val gradientColorsArray: IntArray = intArrayOf(
-            palette.getMutedColor(ContextCompat.getColor(context, R.color.black)),
-            palette.getVibrantColor(ContextCompat.getColor(context, R.color.transparent)),
-            ContextCompat.getColor(context, R.color.transparent)
+            getColorWithAddedAlpha(color, 0x88),
+            Color.TRANSPARENT,
+            Color.TRANSPARENT,
+            Color.TRANSPARENT
         )
 
         return GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColorsArray)
+    }
+
+    private fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
+
+        val red = (color ushr 16) and 0xff
+        val green = (color ushr 8) and 0xff
+        val blue = color and 0xff
+
+        return Color.argb(alpha, red, green, blue)
     }
 }
