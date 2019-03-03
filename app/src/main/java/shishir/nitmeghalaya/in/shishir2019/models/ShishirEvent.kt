@@ -5,5 +5,6 @@ data class ShishirEvent (
     val description: String = "",
     val rules: String = "",
     val judging: String = "",
+    var image: String = "",
     val subEvents: List<ShishirEvent> = listOf()
 )

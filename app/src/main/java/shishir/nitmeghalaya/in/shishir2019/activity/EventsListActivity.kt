@@ -23,6 +23,7 @@ class EventsListActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_list)
         eventsRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        eventsRecyclerView.recycledViewPool.setMaxRecycledViews(0, 0)
 
         val eventsList = ArrayList<ShishirEvent>()
 
