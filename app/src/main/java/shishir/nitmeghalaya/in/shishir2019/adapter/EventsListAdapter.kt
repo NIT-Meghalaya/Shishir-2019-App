@@ -24,7 +24,6 @@ class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>, private v
     override fun onBindViewHolder(holder: EventsListItemViewHolder, position: Int) {
         val item = itemList[position]
         holder.bind(item)
-        Glide.with(context).load(R.drawable.samplebg).into(holder.image)
     }
 
 }
