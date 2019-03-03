@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_events_list.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventsListAdapter
-import shishir.nitmeghalaya.`in`.shishir2019.models.EventCard
+import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 
 class EventsListActivity : AppCompatActivity(){
 
@@ -17,9 +17,9 @@ class EventsListActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_list)
 
-        val items = ArrayList<EventCard>()
-        for (i in 0..10)
-            items.add(EventCard("Type $i", "Title $i"))
+        val items = ArrayList<ShishirEvent>()
+//        for (i in 0..10)
+//            items.add(ShishirEvent("Type $i", "Title $i"))
 
         val adapter = EventsListAdapter(items,applicationContext)
         eventsRecyclerView.adapter = adapter
