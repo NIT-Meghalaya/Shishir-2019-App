@@ -32,7 +32,7 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 23)
-                foreground = createForegroundGradient()
+                eventListItemImage.foreground = createForegroundGradient()
         }
     }
 
@@ -51,8 +51,7 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
         }
 
         val gradientColorsArray: IntArray = intArrayOf(
-            getColorWithAddedAlpha(color, 0x88),
-            Color.TRANSPARENT,
+            getColorWithAddedAlpha(color, 0x66),
             Color.TRANSPARENT,
             Color.TRANSPARENT
         )

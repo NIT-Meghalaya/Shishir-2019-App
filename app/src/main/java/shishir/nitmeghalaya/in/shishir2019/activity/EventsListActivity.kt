@@ -17,7 +17,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.util.DBConsts
 
 class EventsListActivity : AppCompatActivity(), AnkoLogger {
 
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
