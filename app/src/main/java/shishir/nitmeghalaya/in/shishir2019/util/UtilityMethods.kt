@@ -2,8 +2,6 @@ package shishir.nitmeghalaya.`in`.shishir2019.util
 
 import android.content.Context
 import android.widget.Toast
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
@@ -29,7 +27,7 @@ fun drawableToBitmap(drawable: Drawable): Bitmap {
 
     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
-    drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+    drawable.setBounds(0, 0, canvas.width, canvas.height)
     drawable.draw(canvas)
 
     return bitmap

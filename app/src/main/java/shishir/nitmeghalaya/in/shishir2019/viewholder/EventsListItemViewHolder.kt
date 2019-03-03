@@ -3,7 +3,6 @@ package shishir.nitmeghalaya.`in`.shishir2019.viewholder
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -52,7 +51,6 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
                     item.foregroundGradient = createForegroundGradient()
                 eventListItemImage.foreground = item.foregroundGradient
             }
-
         }
     }
 
@@ -60,14 +58,7 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
 
         val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
         val palette = Palette.from(eventImageBitmap).generate()
-        var color: Int
-
-        color = palette.getMutedColor(ContextCompat.getColor(context, R.color.black))
-        if (color == Color.BLACK) {
-            color = palette.getLightMutedColor(ContextCompat.getColor(context, R.color.black))
-            if(color == Color.BLACK)
-                color = palette.getVibrantColor(ContextCompat.getColor(context, R.color.black))
-        }
+        val color = palette.getDominantColor(Color.BLACK)
 
         val gradientColorsArray: IntArray = intArrayOf(
             getColorWithAddedAlpha(color, 0xff), Color.TRANSPARENT, Color.TRANSPARENT)
