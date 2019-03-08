@@ -22,11 +22,10 @@ class EventsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_events_list)
         eventsRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        //eventsRecyclerView.recycledViewPool.setMaxRecycledViews(0, 0)
 
         val eventsList = ArrayList<ShishirEvent>()
 
-        db.collection(DBConsts.EVENTS)
+        db.collection(DBConsts.COLLECTION_EVENTS)
             .get()
             .addOnSuccessListener {
                 toast("Data received")

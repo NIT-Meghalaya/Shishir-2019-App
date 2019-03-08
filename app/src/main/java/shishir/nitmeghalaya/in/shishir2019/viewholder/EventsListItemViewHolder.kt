@@ -13,6 +13,9 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
+import shishir.nitmeghalaya.`in`.shishir2019.activity.EventSubListActivity
+import shishir.nitmeghalaya.`in`.shishir2019.util.*
 import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
 
 /**
@@ -21,7 +24,6 @@ import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
 
 class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    private val context = view.context
     private lateinit var item: ShishirEvent
     private var imageResId = 0
 
@@ -31,7 +33,7 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
         if (item.image.isEmpty())
             item.image = "krigg"
 
-        imageResId = getImageResource(context, item.image)
+        imageResId = getImageResource(view.context, item.image)
 
         view.apply {
             eventListItemTitle.text = item.name
@@ -41,8 +43,19 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
             Glide.with(this).load(getImageResource(context, item.image)).apply(options).into(eventListItemImage)
 
             setOnClickListener {
-                val intent = Intent(view.context, EventDetailActivity::class.java)
-                view.context.startActivity(intent)
+
+                var intent = Intent(context, EventDetailActivity::class.java)
+                intent.putExtra(EVENT_DATA, Gson().toJson(item))
+
+                if (eventListItemTitle.text == EVENT_LIST_FUN) {
+                    intent = Intent(context, EventSubListActivity::class.java)
+                    intent.putExtra(EVENT_LIST_FUN, COLLECTION_FUN_EVENTS)
+                } else if (eventListItemTitle.text == EVENT_LIST_KRIGG) {
+                    intent = Intent(context, EventSubListActivity::class.java)
+                    intent.putExtra(EVENT_LIST_KRIGG, COLLECTION_KRIGG_EVENTS)
+                }
+
+                context.startActivity(intent)
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 23) {
@@ -56,7 +69,7 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
 
     private fun createForegroundGradient(): GradientDrawable {
 
-        val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
+        val eventImageBitmap = BitmapFactory.decodeResource(view.context.resources, imageResId)
         val palette = Palette.from(eventImageBitmap).generate()
         val color = palette.getDominantColor(Color.BLACK)
 

@@ -14,6 +14,7 @@ class EventDetailActivity:AppCompatActivity(){
         //get data from intent
 
 
+
         // back button
         val back = findViewById(R.id.backbutton) as ImageView
         back.setOnClickListener {finish()}
