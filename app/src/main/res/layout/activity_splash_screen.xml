@@ -5,29 +5,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.EventsListActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        tools:context=".activity.SplashScreenActivity">
 
     <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_view"
+            android:id="@+id/loading_data_animation"
             android:layout_width="300dp"
-            android:layout_height="150dp"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:layout_centerInParent="true"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="loading.json"
+            app:lottie_fileName="preloader2.json"
             app:lottie_loop="false" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
