@@ -15,20 +15,18 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.EventsListActivity">
         </activity>
-        <activity android:name=".activity.EventSubListActivity">
-        </activity>
+        <activity android:name=".activity.EventSubListActivity"> </activity>
         <activity
                 android:name=".activity.SplashScreenActivity"
                 android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
                 android:name=".activity.EventDetailActivity"
-                android:label="Event Details">
+                android:label="">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".activity.EventsListActivity"/>
