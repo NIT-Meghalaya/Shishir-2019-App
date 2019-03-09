@@ -61,30 +61,9 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
             if (android.os.Build.VERSION.SDK_INT >= 23) {
                 //Putting this condition check to improve performance
                 if (item.foregroundGradient == null)
-                    item.foregroundGradient = createForegroundGradient()
+                    item.foregroundGradient = createForegroundGradient(context, imageResId)
                 eventListItemImage.foreground = item.foregroundGradient
             }
         }
-    }
-
-    private fun createForegroundGradient(): GradientDrawable {
-
-        val eventImageBitmap = BitmapFactory.decodeResource(view.context.resources, imageResId)
-        val palette = Palette.from(eventImageBitmap).generate()
-        val color = palette.getDominantColor(Color.BLACK)
-
-        val gradientColorsArray: IntArray = intArrayOf(
-            getColorWithAddedAlpha(color, 0xff), Color.TRANSPARENT, Color.TRANSPARENT)
-
-        return GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColorsArray)
-    }
-
-    private fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
-
-        val red = (color ushr 16) and 0xff
-        val green = (color ushr 8) and 0xff
-        val blue = color and 0xff
-
-        return Color.argb(alpha, red, green, blue)
     }
 }
