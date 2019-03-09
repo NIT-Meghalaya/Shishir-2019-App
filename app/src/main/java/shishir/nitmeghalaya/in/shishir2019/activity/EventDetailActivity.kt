@@ -16,12 +16,11 @@ class EventDetailActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_desc)
 
-        //get data from intent
         shishirEvent = Gson().fromJson(intent.getStringExtra(EVENT_DATA), ShishirEvent::class.java)
-        titleTV.text = shishirEvent.name
 
-        // back button
-        val back = backbutton
-        back.setOnClickListener {finish()}
+        setSupportActionBar(toolbar)
+        toolbar.title = shishirEvent.name
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 }

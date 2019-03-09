@@ -26,8 +26,7 @@
         </activity>
         <activity
                 android:name=".activity.EventDetailActivity"
-                android:label="Event Details"
-                android:launchMode="singleTop">
+                android:label="Event Details">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".activity.EventsListActivity"/>
