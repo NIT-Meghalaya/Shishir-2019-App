@@ -8,6 +8,6 @@ data class ShishirEvent (
     val rules: String = "",
     val judging: String = "",
     var image: String = "",
-    var foregroundGradient: GradientDrawable? = null,
+    @Transient var foregroundGradient: GradientDrawable? = null,
     val subEvents: List<ShishirEvent> = listOf()
 )

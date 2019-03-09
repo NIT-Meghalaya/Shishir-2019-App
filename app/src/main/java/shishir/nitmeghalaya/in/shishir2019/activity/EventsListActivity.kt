@@ -11,8 +11,7 @@ import org.jetbrains.anko.toast
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventsListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
-import shishir.nitmeghalaya.`in`.shishir2019.util.DBConsts
-
+import shishir.nitmeghalaya.`in`.shishir2019.util.COLLECTION_EVENTS
 
 class EventsListActivity : AppCompatActivity() {
 
@@ -25,7 +24,7 @@ class EventsListActivity : AppCompatActivity() {
 
         val eventsList = ArrayList<ShishirEvent>()
 
-        db.collection(DBConsts.COLLECTION_EVENTS)
+        db.collection(COLLECTION_EVENTS)
             .get()
             .addOnSuccessListener {
                 toast("Data received")
