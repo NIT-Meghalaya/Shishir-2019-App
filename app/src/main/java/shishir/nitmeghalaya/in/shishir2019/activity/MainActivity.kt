@@ -1,5 +1,6 @@
 package shishir.nitmeghalaya.`in`.shishir2019.activity
 
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -13,12 +14,16 @@ import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.COLLECTION_EVENTS
+import shishir.nitmeghalaya.`in`.shishir2019.util.createForegroundGradient
+import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
 import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() ,
+    EventsListFragment.EventsGradientsProvider {
 
     private val db = FirebaseFirestore.getInstance()
     private var eventsList = ArrayList<ShishirEvent>()
+    private var eventsGradientsList = ArrayList<GradientDrawable>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 for (document in it) {
                     eventsList.add(document.toObject(ShishirEvent::class.java))
                 }
+                calculateForegroundGradientsForShishirEvents()
                 addEventsListFragment()
                 Log.v("List", eventsList.toString())
             }
@@ -47,12 +53,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun getEventsGradients(): ArrayList<GradientDrawable> {
+        return eventsGradientsList
+    }
+
     private fun addEventsListFragment() {
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_placeholder,
             EventsListFragment.newInstance(
                 Gson().getJsonFromList<ArrayList<ShishirEvent>>(eventsList)))
         ft.commit()
+    }
+
+    private fun calculateForegroundGradientsForShishirEvents() {
+        for (event in eventsList) {
+            eventsGradientsList.add(createForegroundGradient(
+                applicationContext, getImageResource(applicationContext,
+                    if (event.image.isEmpty()) "krigg" else event.image)))
+        }
     }
 
     private fun setUpBottomNavigation() {

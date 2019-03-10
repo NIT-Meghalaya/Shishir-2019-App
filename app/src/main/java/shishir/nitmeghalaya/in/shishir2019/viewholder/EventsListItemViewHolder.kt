@@ -29,7 +29,6 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
 
     fun bind(item: ShishirEvent) {
         this.item = item
-
         if (item.image.isEmpty())
             item.image = "krigg"
 
@@ -59,9 +58,6 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 23) {
-                //Putting this condition check to improve performance
-                if (item.foregroundGradient == null)
-                    item.foregroundGradient = createForegroundGradient(context, imageResId)
                 eventListItemImage.foreground = item.foregroundGradient
             }
         }

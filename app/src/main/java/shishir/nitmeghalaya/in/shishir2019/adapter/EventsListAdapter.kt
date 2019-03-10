@@ -1,5 +1,6 @@
 package shishir.nitmeghalaya.`in`.shishir2019.adapter
 
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +8,8 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.EventsListItemViewHolder
 
-class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>)
+class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>,
+                        private val eventsGradientsList: ArrayList<GradientDrawable>?)
     : RecyclerView.Adapter<EventsListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsListItemViewHolder {
@@ -21,6 +23,7 @@ class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>)
 
     override fun onBindViewHolder(holder: EventsListItemViewHolder, position: Int) {
         val item = itemList[position]
+        item.foregroundGradient = eventsGradientsList?.get(position)
         holder.bind(item)
     }
 
