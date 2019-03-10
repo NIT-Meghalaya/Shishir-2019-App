@@ -78,12 +78,12 @@ class MainActivity : AppCompatActivity() ,
 
         bottomNavigationView.apply {
             setOnNavigationItemSelectedListener {
-                supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 val ft = supportFragmentManager.beginTransaction()
 
                 when (it.itemId) {
                     R.id.action_events_list -> {
                         if (currentItem != 0) {
+                            supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                             ft.replace(R.id.fragment_placeholder, EventsListFragment.newInstance(
                                 Gson().getJsonFromList<ArrayList<ShishirEvent>>(eventsList)))
                         }
@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() ,
 
                     R.id.action_schedule -> {
                         if (currentItem != 1) {
+                            supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                             ft.replace(R.id.fragment_placeholder, ScheduleFragment.newInstance())
                                 .addToBackStack("schedule")
                         }
