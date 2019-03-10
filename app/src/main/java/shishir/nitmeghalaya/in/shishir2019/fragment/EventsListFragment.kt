@@ -1,7 +1,5 @@
 package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,11 +14,25 @@ import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventsListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.getListFromJson
 
-
 class EventsListFragment : Fragment() {
 
     private lateinit var eventsList: ArrayList<ShishirEvent>
-    //private var listener: OnEventListFragmentInteractionListener? = null
+
+    companion object {
+
+        private const val EVENTS_LIST = "events list"
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         */
+        @JvmStatic
+        fun newInstance(eventsList: String) =
+            EventsListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(EVENTS_LIST, eventsList)
+                }
+            }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,44 +53,5 @@ class EventsListFragment : Fragment() {
             }
         }
         return view
-    }
-
-//    fun onButtonPressed(uri: Uri) {
-//        listener?.onEventItemSelected(uri)
-//    }
-//
-//   override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnEventListFragmentInteractionListener) {
-//            listener = context
-//        } else {
-//            throw RuntimeException(
-//                "$context must implement OnEventListFragmentInteractionListener")
-//        }
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
-//
-//    interface OnEventListFragmentInteractionListener {
-//        fun onEventItemSelected(uri: Uri)
-//    }
-
-    companion object {
-
-        private const val EVENTS_LIST = "events list"
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         */
-        @JvmStatic
-        fun newInstance(eventsList: String) =
-            EventsListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(EVENTS_LIST, eventsList)
-                }
-            }
     }
 }

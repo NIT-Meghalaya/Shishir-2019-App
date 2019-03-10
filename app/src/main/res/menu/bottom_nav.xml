@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/events_list"
+        android:id="@+id/action_events_list"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:title="Events"/>
     <item
-        android:id="@+id/schedule"
+        android:id="@+id/action_schedule"
         android:icon="@drawable/ic_event_black_24dp"
         android:title="Schedule"/>
 
     <item
-        android:id="@+id/members"
+        android:id="@+id/action_team"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Members"/>
+        android:title="Team"/>
 
     <item
-        android:id="@+id/notification"
+        android:id="@+id/action_notification"
         android:icon="@drawable/ic_notifications_active_black_24dp"
         android:title="Notifications"/>
 
