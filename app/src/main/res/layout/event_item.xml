@@ -16,8 +16,8 @@
             android:id="@+id/eventListItemImage" />
 
     <TextView
-            tools:text="TextView"
-            android:layout_width="wrap_content"
+            tools:text="TextView TextView TextView TextView TextView TextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/eventListItemTitle"
             android:textSize="24sp"
@@ -26,6 +26,7 @@
             android:textStyle="bold"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
