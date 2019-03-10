@@ -13,10 +13,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
-import shishir.nitmeghalaya.`in`.shishir2019.util.COLLECTION_EVENTS
-import shishir.nitmeghalaya.`in`.shishir2019.util.createForegroundGradient
-import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
-import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
+import shishir.nitmeghalaya.`in`.shishir2019.util.*
 
 class MainActivity : AppCompatActivity() ,
     EventsListFragment.EventsGradientsProvider {

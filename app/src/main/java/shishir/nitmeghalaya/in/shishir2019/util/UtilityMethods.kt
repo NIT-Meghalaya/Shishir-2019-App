@@ -46,9 +46,7 @@ fun getImageResource(context: Context, imageName: String): Int {
 
 fun createForegroundGradient(context: Context, imageResId: Int): GradientDrawable {
 
-    val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
-    val palette = Palette.from(eventImageBitmap).generate()
-    val color = palette.getDominantColor(Color.BLACK)
+    val color = getDominantImageColor(context, imageResId)
 
     val gradientColorsArray: IntArray = intArrayOf(
         getColorWithAddedAlpha(color, 0xff), Color.TRANSPARENT, Color.TRANSPARENT)
@@ -56,13 +54,13 @@ fun createForegroundGradient(context: Context, imageResId: Int): GradientDrawabl
     return GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColorsArray)
 }
 
-public inline fun <reified T> Gson.getListFromJson(json: String) =
-    this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+fun getDominantImageColor(context: Context, imageResId: Int): Int {
+    val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
+    val palette = Palette.from(eventImageBitmap).generate()
+    return palette.getDominantColor(Color.BLACK)
+}
 
-public inline fun <reified T> Gson.getJsonFromList(eventsList: ArrayList<ShishirEvent>) =
-    this.toJson(eventsList, object : TypeToken<T>() {}.type)
-
-private fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
+fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
 
     val red = (color ushr 16) and 0xff
     val green = (color ushr 8) and 0xff
@@ -70,3 +68,9 @@ private fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
 
     return Color.argb(alpha, red, green, blue)
 }
+
+public inline fun <reified T> Gson.getListFromJson(json: String) =
+    this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+
+public inline fun <reified T> Gson.getJsonFromList(eventsList: ArrayList<ShishirEvent>) =
+    this.toJson(eventsList, object : TypeToken<T>() {}.type)
