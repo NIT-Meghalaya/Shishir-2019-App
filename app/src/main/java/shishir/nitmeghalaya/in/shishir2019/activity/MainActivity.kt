@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() ,
         ft.commit()
     }
 
+    //It helps in preventing lag on switching to EventsListFragment
     private fun calculateForegroundGradientsForShishirEvents() {
         for (event in eventsList) {
             eventsGradientsList.add(createForegroundGradient(
@@ -94,7 +95,6 @@ class MainActivity : AppCompatActivity() ,
                                 .addToBackStack("schedule")
                         }
                     }
-
                 }
                 ft.commit()
                 true

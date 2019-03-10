@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_events_list"
-        android:icon="@drawable/ic_favorite_black_24dp"
+        android:icon="@drawable/ic_event_black_24dp"
         android:title="Events"/>
     <item
         android:id="@+id/action_schedule"
-        android:icon="@drawable/ic_event_black_24dp"
+        android:icon="@drawable/ic_schedule"
         android:title="Schedule"/>
 
     <item
