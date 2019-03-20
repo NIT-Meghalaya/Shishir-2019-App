@@ -37,7 +37,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.1'
 
     // dependencies for local unit tests
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
 
