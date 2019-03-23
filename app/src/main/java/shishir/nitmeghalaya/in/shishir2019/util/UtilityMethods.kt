@@ -69,6 +69,24 @@ fun getColorWithAddedAlpha(color: Int, alpha: Int): Int {
     return Color.argb(alpha, red, green, blue)
 }
 
+fun getTitleTextColorForImage(context: Context, imageResId: Int): Int {
+    val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
+    val palette = Palette.from(eventImageBitmap).generate()
+    val color = palette.dominantSwatch?.titleTextColor ?: Color.WHITE
+    return stripAlpha(color)
+}
+
+fun getBodyTextColorForImage(context: Context, imageResId: Int): Int {
+    val eventImageBitmap = BitmapFactory.decodeResource(context.resources, imageResId)
+    val palette = Palette.from(eventImageBitmap).generate()
+    val color = palette.dominantSwatch?.bodyTextColor ?: Color.WHITE
+    return stripAlpha(color)
+}
+
+fun stripAlpha(color: Int): Int {
+    return Color.rgb(Color.red(color), Color.green(color), Color.blue(color))
+}
+
 public inline fun <reified T> Gson.getListFromJson(json: String) =
     this.fromJson<T>(json, object : TypeToken<T>() {}.type)
 
