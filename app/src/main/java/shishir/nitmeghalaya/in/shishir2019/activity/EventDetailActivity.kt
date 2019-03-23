@@ -1,14 +1,11 @@
 package shishir.nitmeghalaya.`in`.shishir2019.activity
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
-import jp.wasabeef.blurry.Blurry
 import jp.wasabeef.glide.transformations.BlurTransformation
 import jp.wasabeef.glide.transformations.ColorFilterTransformation
 import kotlinx.android.synthetic.main.activity_event_detail.*
@@ -36,7 +33,6 @@ class EventDetailActivity:AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun setUpViews() {
-        toolbarLayout.toolbarTitle.text = shishirEvent.name
         name.text = shishirEvent.name
 
         val requestOptions = RequestOptions()
@@ -52,5 +48,7 @@ class EventDetailActivity:AppCompatActivity() {
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             backgroundImage.foreground = createForegroundGradient(this, imageResId)
         }
+
+        descriptionTV.text = shishirEvent.description
     }
 }

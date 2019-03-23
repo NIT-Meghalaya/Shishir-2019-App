@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -10,6 +10,15 @@
 
     <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="EventDescriptionFields" parent="android:Widget.TextView">
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:paddingEnd">@dimen/_20sdp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:drawableTint" tools:targetApi="m">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawablePadding">@dimen/_8sdp</item>
     </style>
 
 </resources>

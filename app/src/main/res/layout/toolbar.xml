@@ -15,14 +15,14 @@
         app:layout_constraintTop_toTopOf="parent" >
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/toolbarTitle"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        tools:text="@tools:sample/lorem"
-        android:gravity="center"
-        android:textAllCaps="true"
-        style="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<TextView-->
+        <!--android:id="@+id/toolbarTitle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--tools:text="@tools:sample/lorem"-->
+        <!--android:gravity="center"-->
+        <!--android:textAllCaps="true"-->
+        <!--style="@style/TextAppearance.AppCompat.Medium"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 </RelativeLayout>
