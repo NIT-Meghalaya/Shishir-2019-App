@@ -78,6 +78,9 @@ dependencies {
 
     //Glide transformations
     implementation 'jp.wasabeef:glide-transformations:4.0.0'
+
+    //Blurry
+    implementation 'jp.wasabeef:blurry:3.0.0'
 }
 
 //FireBase

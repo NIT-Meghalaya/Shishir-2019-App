@@ -1,10 +1,16 @@
 package shishir.nitmeghalaya.`in`.shishir2019.activity
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
+import jp.wasabeef.blurry.Blurry
+import jp.wasabeef.glide.transformations.BlurTransformation
+import jp.wasabeef.glide.transformations.ColorFilterTransformation
 import kotlinx.android.synthetic.main.activity_event_detail.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
@@ -33,14 +39,15 @@ class EventDetailActivity:AppCompatActivity() {
         toolbarLayout.toolbarTitle.text = shishirEvent.name
         name.text = shishirEvent.name
 
-        Glide.with(this).load(imageResId).into(backgroundImage)
-//
-//        val imageTintColor = getColorWithAddedAlpha(0xff, getDominantImageColor(this, imageResId))
-//        backgroundImage.setColorFilter(imageTintColor, android.graphics.PorterDuff.Mode.ADD)
-////        ImageViewCompat.setImageTintList(backgroundImage,
-//////                ColorStateList.valueOf(
-//////                        getColorWithAddedAlpha(0xaa, getDominantImageColor(this, imageResId))))
-////
+        val requestOptions = RequestOptions()
+        requestOptions.transforms(
+            ColorFilterTransformation(getColorWithAddedAlpha(getDominantImageColor(this, imageResId), 0x66)),
+            BlurTransformation(22))
+        requestOptions.placeholder(imageResId)
+
+        Glide.with(this).load(imageResId)
+            .apply(requestOptions)
+            .into(backgroundImage)
 
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             backgroundImage.foreground = createForegroundGradient(this, imageResId)
