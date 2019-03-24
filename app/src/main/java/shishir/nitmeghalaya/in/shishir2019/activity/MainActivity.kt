@@ -16,11 +16,12 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.*
 
 class MainActivity : AppCompatActivity() ,
-    EventsListFragment.EventsGradientsProvider {
+    EventsListFragment.EventsListItemsColorsProvider {
 
     private val db = FirebaseFirestore.getInstance()
     private var eventsList = ArrayList<ShishirEvent>()
     private var eventsGradientsList = ArrayList<GradientDrawable>()
+    private var eventsTitleColorsList = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,16 @@ class MainActivity : AppCompatActivity() ,
         return eventsGradientsList
     }
 
+    override fun getEventsTitleColors(): ArrayList<Int> {
+        for (event in eventsList) {
+            eventsTitleColorsList.add(
+                getTitleTextColorForImage(this,
+                    getImageResource(this, if (event.image.isEmpty()) "krigg" else event.image))
+            )
+        }
+        return eventsTitleColorsList
+    }
+
     private fun addEventsListFragment() {
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_placeholder,
@@ -66,7 +77,7 @@ class MainActivity : AppCompatActivity() ,
     private fun calculateForegroundGradientsForShishirEvents() {
         for (event in eventsList) {
             eventsGradientsList.add(createForegroundGradient(
-                applicationContext, getImageResource(applicationContext,
+                this, getImageResource(this,
                     if (event.image.isEmpty()) "krigg" else event.image)))
         }
     }

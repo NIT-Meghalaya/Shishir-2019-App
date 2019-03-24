@@ -20,7 +20,7 @@ import java.lang.RuntimeException
 class EventsListFragment : Fragment() {
 
     private lateinit var eventsList: ArrayList<ShishirEvent>
-    private var gradientProvider: EventsGradientsProvider? = null
+    private var gradientProvider: EventsListItemsColorsProvider? = null
 
     companion object {
 
@@ -44,6 +44,11 @@ class EventsListFragment : Fragment() {
         arguments?.apply {
             eventsList = Gson().getListFromJson<ArrayList<ShishirEvent>>(
                 getString(EVENTS_LIST)!!)
+
+            val eventsTitleColorsList = gradientProvider?.getEventsTitleColors() ?: ArrayList()
+            for (i in 0 until eventsList.size) {
+                eventsList[i].titleTextColor = eventsTitleColorsList[i]
+            }
         }
     }
 
@@ -62,10 +67,10 @@ class EventsListFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is EventsGradientsProvider)
+        if (context is EventsListItemsColorsProvider)
             gradientProvider = context
         else
-            throw RuntimeException("$context must implement EventsGradientProvider")
+            throw RuntimeException("$context must implement EventsListItemsProvider")
     }
 
     override fun onDetach() {
@@ -73,7 +78,8 @@ class EventsListFragment : Fragment() {
         gradientProvider = null
     }
 
-    interface EventsGradientsProvider {
+    interface EventsListItemsColorsProvider {
         fun getEventsGradients(): ArrayList<GradientDrawable>
+        fun getEventsTitleColors(): ArrayList<Int>
     }
 }

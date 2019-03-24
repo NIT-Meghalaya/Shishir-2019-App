@@ -60,6 +60,8 @@ class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder
             if (android.os.Build.VERSION.SDK_INT >= 23) {
                 eventListItemImage.foreground = item.foregroundGradient
             }
+
+//            eventListItemTitle.setTextColor(item.titleTextColor)
         }
     }
 }
