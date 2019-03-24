@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<androidx.appcompat.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="?homeAsUpIndicator"
-        app:layout_constraintTop_toTopOf="parent" >
-    </androidx.appcompat.widget.Toolbar>
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlways">
 
     <ImageView
         android:id="@+id/titleImage"
@@ -23,7 +17,10 @@
         android:src="@drawable/actionbar_logo"
         android:scaleType="fitCenter"
         android:paddingTop="@dimen/_4sdp"
-        android:paddingBottom="@dimen/_4sdp"/>
+        android:paddingBottom="@dimen/_4sdp" />
+
+</androidx.appcompat.widget.Toolbar>
+
 
     <!--<TextView-->
         <!--android:id="@+id/toolbarTitle"-->
@@ -35,4 +32,4 @@
         <!--style="@style/TextAppearance.AppCompat.Medium"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-</RelativeLayout>
+<!--</RelativeLayout>-->

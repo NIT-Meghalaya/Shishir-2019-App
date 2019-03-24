@@ -28,10 +28,6 @@ class EventDetailActivity:AppCompatActivity() {
         shishirEvent = Gson().fromJson(intent.getStringExtra(EVENT_DATA), ShishirEvent::class.java)
         imageResId = getImageResource(this, shishirEvent.image)
 
-        toolbarLayout.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-
 //        setSupportActionBar(toolbarLayout.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setUpViews()
@@ -63,11 +59,11 @@ class EventDetailActivity:AppCompatActivity() {
         descriptionTV.text = shishirEvent.description
         //descriptionTV.setTextColor(bodyColor)
 
-        setUpToolbar()
+        //setUpToolbar()
     }
 
     private fun setUpToolbar() {
         toolbarLayout.titleImage.visibility = View.GONE
-        toolbarLayout.setBackgroundColor(Color.WHITE)
+        toolbarLayout.setBackgroundColor(Color.TRANSPARENT)
     }
 }

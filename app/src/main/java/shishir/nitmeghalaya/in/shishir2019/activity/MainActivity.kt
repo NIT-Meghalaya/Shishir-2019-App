@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() ,
                 toast("Error!")
             }
         setUpBottomNavigation()
-        setSupportActionBar(toolbarLayout.toolbar)
     }
 
     override fun onBackPressed() {
