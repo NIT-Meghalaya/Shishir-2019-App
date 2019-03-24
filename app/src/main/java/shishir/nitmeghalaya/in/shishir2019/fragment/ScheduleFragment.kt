@@ -1,21 +1,64 @@
 package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_schedule.view.*
 
 import shishir.nitmeghalaya.`in`.shishir2019.R
+import shishir.nitmeghalaya.`in`.shishir2019.adapter.SchedulePagerAdapter
+import shishir.nitmeghalaya.`in`.shishir2019.models.EventScheduleItem
+import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider
+import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_1
+import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_2
 
-class ScheduleFragment : Fragment() {
+class ScheduleFragment : Fragment(), ScheduleProvider {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false)
+    var scheduleDay1 = arrayListOf<EventScheduleItem>()
+    var scheduleDay2 = arrayListOf<EventScheduleItem>()
+
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        val view = inflater.inflate(R.layout.fragment_schedule, container, false)
+
+        val adapter = SchedulePagerAdapter(fragmentManager!!, this)
+        getScheduleFromDatabase(adapter)
+
+        view.apply {
+            viewPager.adapter = adapter
+            viewPager.currentItem = 0
+        }
+
+        return view
+    }
+
+    override fun getSchedule(day: String) = when(day) {
+             DAY_1 -> scheduleDay1
+             DAY_2 -> scheduleDay2
+             else -> ArrayList()
+        }
+
+    private fun getScheduleFromDatabase(adapter: SchedulePagerAdapter) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("schedule").document("schedule").get()
+            .addOnSuccessListener { documentSnapshot ->
+                val map = documentSnapshot.data
+                Log.v("data", map.toString())
+                map?.forEach {
+                    when (it.key) {
+                        DAY_1 -> scheduleDay1 = it.value as ArrayList<EventScheduleItem>
+                        DAY_2 -> scheduleDay2 = it.value as ArrayList<EventScheduleItem>
+                    }
+                }
+                Log.v("schedule1", scheduleDay1.toString())
+                Log.v("schedule2", scheduleDay2.toString())
+                adapter.notifyDataSetChanged()
+            }
     }
 
     companion object {

@@ -90,5 +90,5 @@ fun stripAlpha(color: Int): Int {
 public inline fun <reified T> Gson.getListFromJson(json: String) =
     this.fromJson<T>(json, object : TypeToken<T>() {}.type)
 
-public inline fun <reified T> Gson.getJsonFromList(eventsList: ArrayList<ShishirEvent>) =
+public inline fun <reified T> Gson.getJsonFromList(eventsList: ArrayList<*>) =
     this.toJson(eventsList, object : TypeToken<T>() {}.type)

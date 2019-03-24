@@ -74,11 +74,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Title"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:paddingLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"/>
+            android:layout_marginTop="@dimen/_16sdp"/>
 
     </androidx.cardview.widget.CardView>
 

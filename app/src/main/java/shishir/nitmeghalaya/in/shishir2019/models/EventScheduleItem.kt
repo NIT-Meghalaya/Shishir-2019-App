@@ -7,5 +7,6 @@ package shishir.nitmeghalaya.`in`.shishir2019.models
 data class EventScheduleItem(
     val name: String = "",
     val startTime: String = "",
-    val endTime: String = ""
+    val endTime: String = "",
+    val date: String = ""
 )

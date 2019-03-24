@@ -1,15 +1,17 @@
 package shishir.nitmeghalaya.`in`.shishir2019.util
 
+import shishir.nitmeghalaya.`in`.shishir2019.models.EventScheduleItem
+
 /**
  * Created by Devansh on 10/3/19.
  */
 
-object ScheduleProvider {
+interface ScheduleProvider {
 
-    val In = 0
-
-    fun getSchedule() {
-
+    companion object {
+        const val DAY_1 = "day1"
+        const val DAY_2 = "day2"
     }
 
+    fun getSchedule(day: String): ArrayList<EventScheduleItem>
 }
