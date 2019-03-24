@@ -13,6 +13,10 @@
         android:orientation="vertical"
         android:background="@color/white" />
 
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/appbar_layout" />
+
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

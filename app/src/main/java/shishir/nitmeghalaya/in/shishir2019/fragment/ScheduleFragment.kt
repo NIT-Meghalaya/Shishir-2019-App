@@ -66,6 +66,8 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
     private fun setUpViewPagerAndTabs(viewPager: ViewPager) {
         viewPager.adapter = SchedulePagerAdapter(fragmentManager!!, this@ScheduleFragment)
         viewPager.currentItem = 0
+
+        tabLayout.visibility = View.VISIBLE
         tabLayout.setupWithViewPager(viewPager)
     }
 }

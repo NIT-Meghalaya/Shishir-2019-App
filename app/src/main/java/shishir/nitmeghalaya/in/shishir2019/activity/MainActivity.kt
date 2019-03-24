@@ -3,11 +3,13 @@ package shishir.nitmeghalaya.`in`.shishir2019.activity
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.appbar_layout.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.jetbrains.anko.toast
 import shishir.nitmeghalaya.`in`.shishir2019.R
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity() ,
                 when (it.itemId) {
                     R.id.action_events_list -> {
                         if (currentItem != 0) {
+                            appBar.visibility = View.VISIBLE
                             supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                             ft.replace(R.id.fragment_placeholder, EventsListFragment.newInstance(
                                 Gson().getJsonFromList<ArrayList<ShishirEvent>>(eventsList)))
@@ -100,6 +103,7 @@ class MainActivity : AppCompatActivity() ,
 
                     R.id.action_schedule -> {
                         if (currentItem != 1) {
+                            appBar.visibility = View.GONE
                             supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                             ft.replace(R.id.fragment_placeholder, ScheduleFragment.newInstance())
                                 .addToBackStack("schedule")
