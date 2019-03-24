@@ -43,7 +43,7 @@ class EventDetailActivity:AppCompatActivity() {
         name.setTextColor(titleColor)
 
         val requestOptions = RequestOptions()
-        requestOptions.transforms(
+        requestOptions.transform(
             ColorFilterTransformation(getColorWithAddedAlpha(getDominantImageColor(this, imageResId), 0x66)),
             BlurTransformation(22))
         requestOptions.placeholder(imageResId)
@@ -59,11 +59,10 @@ class EventDetailActivity:AppCompatActivity() {
         descriptionTV.text = shishirEvent.description
         //descriptionTV.setTextColor(bodyColor)
 
-        //setUpToolbar()
+        setUpToolbar()
     }
 
     private fun setUpToolbar() {
-        toolbarLayout.titleImage.visibility = View.GONE
-        toolbarLayout.setBackgroundColor(Color.TRANSPARENT)
+        toolbarLayout.visibility = View.GONE
     }
 }

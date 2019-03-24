@@ -55,6 +55,8 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_6sdp"
         app:cardElevation="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
