@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.ViewPager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_schedule.view.*
 
@@ -15,6 +16,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.EventScheduleItem
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_1
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_2
+import shishir.nitmeghalaya.`in`.shishir2019.util.makeShortToast
 
 class ScheduleFragment : Fragment(), ScheduleProvider {
 
@@ -27,7 +29,7 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
 
         val adapter = SchedulePagerAdapter(fragmentManager!!, this)
-        getScheduleFromDatabase(adapter)
+        getScheduleFromDatabase(view.viewPager)
 
         view.apply {
             viewPager.adapter = adapter
@@ -43,7 +45,7 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
              else -> ArrayList()
         }
 
-    private fun getScheduleFromDatabase(adapter: SchedulePagerAdapter) {
+    private fun getScheduleFromDatabase(viewPager: ViewPager) {
         val db = FirebaseFirestore.getInstance()
         db.collection("schedule").document("schedule").get()
             .addOnSuccessListener { documentSnapshot ->
@@ -57,7 +59,9 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                 }
                 Log.v("schedule1", scheduleDay1.toString())
                 Log.v("schedule2", scheduleDay2.toString())
-                adapter.notifyDataSetChanged()
+                makeShortToast(context!!, "Schedule is ready !")
+                viewPager.adapter = SchedulePagerAdapter(fragmentManager!!, this@ScheduleFragment)
+                viewPager.currentItem = 0
             }
     }
 

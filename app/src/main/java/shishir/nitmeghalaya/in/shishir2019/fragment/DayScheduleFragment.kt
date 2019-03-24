@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_day_schedule.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
+import shishir.nitmeghalaya.`in`.shishir2019.adapter.ScheduleItemsAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventScheduleItem
 import shishir.nitmeghalaya.`in`.shishir2019.util.getListFromJson
 
@@ -29,11 +32,14 @@ class DayScheduleFragment : Fragment() {
                 container, false)
 
         view.apply {
+            scheduleRecyclerView.apply {
+                adapter = ScheduleItemsAdapter(schedule, context)
+                layoutManager = LinearLayoutManager(context)
+            }
         }
 
         return view
     }
-
 
     companion object {
 

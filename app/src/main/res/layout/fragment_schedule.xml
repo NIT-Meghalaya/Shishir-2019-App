@@ -7,15 +7,14 @@
     android:orientation="vertical"
     tools:context=".fragment.ScheduleFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabMode="fixed"/>
+    <!--<com.google.android.material.tabs.TabLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:tabMode="fixed"/>-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

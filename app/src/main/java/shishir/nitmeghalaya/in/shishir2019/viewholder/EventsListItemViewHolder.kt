@@ -22,13 +22,14 @@ import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
  * Created by Devansh on 24/1/19.
  */
 
-class EventsListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class EventsListItemViewHolder(view: View) : BaseViewHolder(view) {
 
     private lateinit var item: ShishirEvent
     private var imageResId = 0
 
-    fun bind(item: ShishirEvent) {
-        this.item = item
+    override fun bind(i: Any) {
+        this.item = i as ShishirEvent
+
         if (item.image.isEmpty())
             item.image = "krigg"
 
