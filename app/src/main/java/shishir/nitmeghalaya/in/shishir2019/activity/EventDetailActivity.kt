@@ -3,6 +3,7 @@ package shishir.nitmeghalaya.`in`.shishir2019.activity
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -31,8 +32,8 @@ class EventDetailActivity:AppCompatActivity() {
             onBackPressed()
         }
 
-        setSupportActionBar(toolbarLayout.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setSupportActionBar(toolbarLayout.toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setUpViews()
     }
 
@@ -40,7 +41,7 @@ class EventDetailActivity:AppCompatActivity() {
     private fun setUpViews() {
 
         val titleColor = getTitleTextColorForImage(this, imageResId)
-        val bodyColor = getBodyTextColorForImage(this, imageResId)
+//        val bodyColor = getBodyTextColorForImage(this, imageResId)
 
         name.text = shishirEvent.name
         name.setTextColor(titleColor)
@@ -61,5 +62,12 @@ class EventDetailActivity:AppCompatActivity() {
 
         descriptionTV.text = shishirEvent.description
         //descriptionTV.setTextColor(bodyColor)
+
+        setUpToolbar()
+    }
+
+    private fun setUpToolbar() {
+        toolbarLayout.titleImage.visibility = View.GONE
+        toolbarLayout.setBackgroundColor(Color.WHITE)
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import org.jetbrains.anko.toast
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() ,
                 toast("Error!")
             }
         setUpBottomNavigation()
+        setSupportActionBar(toolbarLayout.toolbar)
     }
 
     override fun onBackPressed() {
