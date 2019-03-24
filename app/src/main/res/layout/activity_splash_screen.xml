@@ -15,7 +15,7 @@
             android:layout_centerInParent="true"
             app:lottie_autoPlay="true"
             app:lottie_fileName="preloader2.json"
-            app:lottie_loop="false" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:lottie_loop="true" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
