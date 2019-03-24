@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_schedule.*
 import kotlinx.android.synthetic.main.fragment_schedule.view.*
 
 import shishir.nitmeghalaya.`in`.shishir2019.R
@@ -27,15 +28,8 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
-
-        val adapter = SchedulePagerAdapter(fragmentManager!!, this)
         getScheduleFromDatabase(view.viewPager)
-
-        view.apply {
-            viewPager.adapter = adapter
-            viewPager.currentItem = 0
-        }
-
+//        setUpViewPagerAndTabs(view.viewPager)
         return view
     }
 
@@ -60,13 +54,18 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                 Log.v("schedule1", scheduleDay1.toString())
                 Log.v("schedule2", scheduleDay2.toString())
                 makeShortToast(context!!, "Schedule is ready !")
-                viewPager.adapter = SchedulePagerAdapter(fragmentManager!!, this@ScheduleFragment)
-                viewPager.currentItem = 0
+                setUpViewPagerAndTabs(viewPager)
             }
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = ScheduleFragment()
+    }
+
+    private fun setUpViewPagerAndTabs(viewPager: ViewPager) {
+        viewPager.adapter = SchedulePagerAdapter(fragmentManager!!, this@ScheduleFragment)
+        viewPager.currentItem = 0
+        tabLayout.setupWithViewPager(viewPager)
     }
 }

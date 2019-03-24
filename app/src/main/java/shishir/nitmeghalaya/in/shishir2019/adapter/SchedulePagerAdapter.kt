@@ -29,6 +29,13 @@ class SchedulePagerAdapter(fm: FragmentManager, provider: ScheduleProvider)
 
     override fun getCount() = 2
 
+    override fun getPageTitle(position: Int) =
+            when(position) {
+                0 -> "April 5"
+                1 -> "April 6"
+                else -> ""
+            }
+
     private fun getScheduleAsJson(scheduleArrayList: ArrayList<EventScheduleItem>): String =
         Gson().getJsonFromList<ArrayList<EventScheduleItem>>(scheduleArrayList)
 }
