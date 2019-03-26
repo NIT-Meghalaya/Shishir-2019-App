@@ -13,8 +13,6 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SponsorListActivity">
-        </activity>
         <activity
                 android:name=".activity.MainActivity"
                 android:label=""/>

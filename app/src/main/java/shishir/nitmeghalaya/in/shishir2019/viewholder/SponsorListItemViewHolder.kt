@@ -11,24 +11,19 @@ import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
 class SponsorListItemViewHolder(view: View): BaseViewHolder(view) {
 
     private lateinit var item: SponsorItem
-    private var imageResId = 0
 
     override fun bind(item: Any) {
         item as SponsorItem
 
-        if (item.image.isEmpty())
-            item.image = "krigg"
-
-        imageResId = getImageResource(view.context, item.image)
+//        if (item.imageUrl.isEmpty())
+//            item.imageUrl = "krigg"
 
         view.apply {
             sponsorTitle.text = item.name
 
             val options = RequestOptions().placeholder(R.drawable.krigg)
-            Glide.with(this).load(getImageResource(context, item.image)).apply(options).into(sponsorImage)
+            Glide.with(this).load(item.imageUrl).apply(options).into(sponsorImage)
 
-//            setOnClickListener {
-//            }
         }
     }
 }
