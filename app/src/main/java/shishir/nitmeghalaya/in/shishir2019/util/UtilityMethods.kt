@@ -9,6 +9,9 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import androidx.palette.graphics.Palette
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -85,6 +88,14 @@ fun getBodyTextColorForImage(context: Context, imageResId: Int): Int {
 
 fun stripAlpha(color: Int): Int {
     return Color.rgb(Color.red(color), Color.green(color), Color.blue(color))
+}
+
+fun fromHtml(source: String): Spanned {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        Html.fromHtml(source)
+    }
 }
 
 public inline fun <reified T> Gson.getListFromJson(json: String) =

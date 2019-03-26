@@ -53,7 +53,7 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                 }
                 Log.v("schedule1", scheduleDay1.toString())
                 Log.v("schedule2", scheduleDay2.toString())
-                makeShortToast(context!!, "Schedule is ready !")
+                //makeShortToast(context!!, "Schedule is ready !")
                 setUpViewPagerAndTabs(viewPager)
             }
     }
