@@ -19,9 +19,7 @@ class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>,
         return EventsListItemViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return itemList.size
-    }
+    override fun getItemCount() = itemList.size
 
     override fun onBindViewHolder(holder: EventsListItemViewHolder, position: Int) {
         val item = itemList[position]

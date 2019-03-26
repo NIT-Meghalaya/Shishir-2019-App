@@ -1,6 +1,7 @@
 package shishir.nitmeghalaya.`in`.shishir2019.viewholder
 
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.event_item.view.*
@@ -18,6 +19,8 @@ class ScheduleItemViewHolder(view: View): BaseViewHolder(view) {
 
     override fun bind(i: Any) {
         item = i as EventScheduleItem
+
+        Log.v("image", item.image)
 
         view.apply {
             startTimeTV.text = item.startTime
