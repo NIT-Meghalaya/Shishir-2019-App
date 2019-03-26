@@ -47,22 +47,12 @@ class EventsListItemViewHolder(view: View) : BaseViewHolder(view) {
                 var intent = Intent(context, EventDetailActivity::class.java)
                 intent.putExtra(EVENT_DATA, Gson().toJson(item))
 
-                if (eventListItemTitle.text == EVENT_LIST_FUN) {
-                    intent = Intent(context, EventSubListActivity::class.java)
-                    intent.putExtra(EVENT_LIST_FUN, COLLECTION_FUN_EVENTS)
-                } else if (eventListItemTitle.text == EVENT_LIST_KRIGG) {
-                    intent = Intent(context, EventSubListActivity::class.java)
-                    intent.putExtra(EVENT_LIST_KRIGG, COLLECTION_KRIGG_EVENTS)
-                }
-
                 context.startActivity(intent)
             }
 
             if (android.os.Build.VERSION.SDK_INT >= 23) {
                 eventListItemImage.foreground = item.foregroundGradient
             }
-
-//            eventListItemTitle.setTextColor(item.titleTextColor)
         }
     }
 }
