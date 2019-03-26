@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        tools:src="@drawable/shishir_logo"
+        android:src="@drawable/shishir_logo"
         android:layout_gravity="center_vertical"/>
 
     <LinearLayout

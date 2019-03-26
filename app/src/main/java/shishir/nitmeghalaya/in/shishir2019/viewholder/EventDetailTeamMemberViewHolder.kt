@@ -16,7 +16,7 @@ class EventDetailTeamMemberViewHolder(view: View): BaseViewHolder(view) {
         view.apply {
             name.text = item.name
             post.text = item.post
-            Glide.with(context).load(item.imageResId).into(imageView)
+            //Glide.with(context).load(item.imageResId).into(imageView)
         }
     }
 }
