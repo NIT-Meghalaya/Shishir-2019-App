@@ -15,6 +15,7 @@ import org.jetbrains.anko.toast
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
+import shishir.nitmeghalaya.`in`.shishir2019.fragment.SponsorListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.*
 
@@ -107,6 +108,14 @@ class MainActivity : AppCompatActivity() ,
                             supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                             ft.replace(R.id.fragment_placeholder, ScheduleFragment.newInstance())
                                 .addToBackStack("schedule")
+                        }
+                    }
+
+                    R.id.action_sponsor-> {
+                        if(currentItem != 2) {
+                            appBar.visibility = View.GONE
+                            supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                            ft.replace(R.id.fragment_placeholder, SponsorListFragment.newInstance()).addToBackStack("sponsors")
                         }
                     }
                 }
