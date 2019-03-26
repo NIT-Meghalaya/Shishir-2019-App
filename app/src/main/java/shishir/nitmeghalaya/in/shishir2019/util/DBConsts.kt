@@ -7,6 +7,7 @@ package shishir.nitmeghalaya.`in`.shishir2019.util
 const val COLLECTION_EVENTS = "events"
 const val COLLECTION_KRIGG_EVENTS = "kriggEvents"
 const val COLLECTION_FUN_EVENTS = "funEvents"
+const val SPONSOR_LIST = "sponsors"
 
 const val EVENT_LIST_KRIGG = "Krigg"
 const val EVENT_LIST_FUN = "Fun Events"
