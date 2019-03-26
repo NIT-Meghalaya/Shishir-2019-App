@@ -3,12 +3,12 @@ package shishir.nitmeghalaya.`in`.shishir2019.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.SponsorListFragment
+import shishir.nitmeghalaya.`in`.shishir2019.fragment.TeamFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,9 +61,17 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
+                    R.id.action_team -> {
+                        if (currentItem != 2) {
+                            appBar.visibility = View.VISIBLE
+                            ft.replace(R.id.fragment_placeholder, TeamFragment.newInstance())
+                                    .addToBackStack(FRAGMENT_TEAM)
+                        }
+                    }
+
                     R.id.action_sponsor-> {
                         if(currentItem != 3) {
-                            appBar.visibility = View.GONE
+                            appBar.visibility = View.VISIBLE
                             ft.replace(R.id.fragment_placeholder, SponsorListFragment.newInstance())
                                 .addToBackStack(FRAGMENT_SPONSORS)
                         }

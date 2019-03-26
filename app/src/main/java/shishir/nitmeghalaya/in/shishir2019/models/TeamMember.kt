@@ -10,5 +10,5 @@ data class TeamMember(
         val contact: String = "",
         val event: String = "",
         val image: String = "",
-        val imageResId: Int = 0
+        var imageResId: Int = 0
 )
