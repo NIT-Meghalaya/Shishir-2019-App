@@ -38,7 +38,7 @@ class EventsListItemViewHolder(view: View) : BaseViewHolder(view) {
         view.apply {
             eventListItemTitle.text = item.name
 
-            val options = RequestOptions().placeholder(R.drawable.krigg)
+            val options = RequestOptions().placeholder(R.drawable.shishir_logo)
 
             Glide.with(this).load(getImageResource(context, item.image)).apply(options).into(eventListItemImage)
 

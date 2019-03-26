@@ -1,92 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator">
 
-    <ImageView
-        android:id="@+id/backgroundImage"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/event_appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/krigg" />
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="true">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/_10sdp">
+            android:layout_height="256dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginBottom="50dp"
+            android:id="@+id/collapsing_toolbar">
 
-            <include
-                android:id="@+id/toolbarLayout"
-                layout="@layout/toolbar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic"
+                app:layout_collapseMode="parallax"
+                android:id="@+id/description_image"/>
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
+            <!--marginBottom prevents overlapping of Toolbar and TabLayout-->
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:layout_gravity="top"
+                android:layout_marginBottom="40dp"
+                android:id="@+id/toolbar">
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/event_tabs"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:paddingStart="@dimen/_16sdp"
-                android:text="Descri"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_40sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/venueText"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
-                app:layout_constraintVertical_bias="0.25"
-                app:layout_constraintVertical_chainStyle="packed" />
+                android:layout_gravity="bottom"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="@android:color/white"/>
 
-            <TextView
-                android:id="@+id/venueText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/EventDescriptionFields"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:text="Venue"
-                android:drawableStart="@drawable/ic_clock"
-                app:layout_constraintBottom_toTopOf="@+id/time_dateText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-            <TextView
-                android:id="@+id/time_dateText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/EventDescriptionFields"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:text="Venue"
-                android:drawableStart="@drawable/ic_clock"
-                app:layout_constraintBottom_toTopOf="@+id/descriptionTV"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/venueText" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                android:id="@+id/descriptionTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/EventDescriptionFields"
-                android:text="Time and Date"
-                android:drawableStart="@drawable/ic_location"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/time_dateText" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/event_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

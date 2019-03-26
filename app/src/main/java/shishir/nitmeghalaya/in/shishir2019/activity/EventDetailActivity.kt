@@ -25,44 +25,45 @@ class EventDetailActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_detail)
 
-        shishirEvent = Gson().fromJson(intent.getStringExtra(EVENT_DATA), ShishirEvent::class.java)
-        imageResId = getImageResource(this, shishirEvent.image)
 
-//        setSupportActionBar(toolbarLayout.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        setUpViews()
+//        shishirEvent = Gson().fromJson(intent.getStringExtra(EVENT_DATA), ShishirEvent::class.java)
+//        imageResId = getImageResource(this, shishirEvent.image)
+//
+////        setSupportActionBar(toolbarLayout.toolbar)
+////        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setUpViews()
     }
 
-    @SuppressLint("CheckResult")
-    private fun setUpViews() {
-
-        val titleColor = getTitleTextColorForImage(this, imageResId)
-//        val bodyColor = getBodyTextColorForImage(this, imageResId)
-
-        name.text = shishirEvent.name
-        name.setTextColor(titleColor)
-
-        val requestOptions = RequestOptions()
-        requestOptions.transform(
-            ColorFilterTransformation(getColorWithAddedAlpha(getDominantImageColor(this, imageResId), 0x66)),
-            BlurTransformation(22))
-        requestOptions.placeholder(imageResId)
-
-        Glide.with(this).load(imageResId)
-            .apply(requestOptions)
-            .into(backgroundImage)
-
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            backgroundImage.foreground = createForegroundGradient(this, imageResId)
-        }
-
-        descriptionTV.text = shishirEvent.description
-        //descriptionTV.setTextColor(bodyColor)
-
-        setUpToolbar()
-    }
-
-    private fun setUpToolbar() {
-        toolbarLayout.visibility = View.GONE
-    }
+//    @SuppressLint("CheckResult")
+//    private fun setUpViews() {
+//
+//        val titleColor = getTitleTextColorForImage(this, imageResId)
+////        val bodyColor = getBodyTextColorForImage(this, imageResId)
+//
+//        name.text = shishirEvent.name
+//        name.setTextColor(titleColor)
+//
+//        val requestOptions = RequestOptions()
+//        requestOptions.transform(
+//            ColorFilterTransformation(getColorWithAddedAlpha(getDominantImageColor(this, imageResId), 0x66)),
+//            BlurTransformation(22))
+//        requestOptions.placeholder(imageResId)
+//
+//        Glide.with(this).load(imageResId)
+//            .apply(requestOptions)
+//            .into(backgroundImage)
+//
+//        if (android.os.Build.VERSION.SDK_INT >= 23) {
+//            backgroundImage.foreground = createForegroundGradient(this, imageResId)
+//        }
+//
+//        descriptionTV.text = shishirEvent.description
+//        //descriptionTV.setTextColor(bodyColor)
+//
+//        setUpToolbar()
+//    }
+//
+//    private fun setUpToolbar() {
+//        toolbarLayout.visibility = View.GONE
+//    }
 }
