@@ -29,7 +29,6 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
 
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
         getScheduleFromDatabase(view.viewPager)
-//        setUpViewPagerAndTabs(view.viewPager)
         return view
     }
 

@@ -9,6 +9,8 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventDetailPagerAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
 import shishir.nitmeghalaya.`in`.shishir2019.util.*
+import android.view.MenuItem
+
 
 class EventDetailActivity:AppCompatActivity() {
 
@@ -24,6 +26,16 @@ class EventDetailActivity:AppCompatActivity() {
         setUpViews()
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home ->
+                onBackPressed()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setUpViews() {
@@ -44,37 +56,4 @@ class EventDetailActivity:AppCompatActivity() {
             eventImage.foreground = createForegroundGradient(this, shishirEvent.imageResId)
         }
     }
-
-//    @SuppressLint("CheckResult")
-//    private fun setUpViews() {
-//
-//        val titleColor = getTitleTextColorForImage(this, imageResId)
-////        val bodyColor = getBodyTextColorForImage(this, imageResId)
-//
-//        name.text = shishirEvent.name
-//        name.setTextColor(titleColor)
-//
-//        val requestOptions = RequestOptions()
-//        requestOptions.transform(
-//            ColorFilterTransformation(getColorWithAddedAlpha(getDominantImageColor(this, imageResId), 0x66)),
-//            BlurTransformation(22))
-//        requestOptions.placeholder(imageResId)
-//
-//        Glide.with(this).load(imageResId)
-//            .apply(requestOptions)
-//            .into(backgroundImage)
-//
-//        if (android.os.Build.VERSION.SDK_INT >= 23) {
-//            backgroundImage.foreground = createForegroundGradient(this, imageResId)
-//        }
-//
-//        descriptionTV.text = shishirEvent.description
-//        //descriptionTV.setTextColor(bodyColor)
-//
-//        setUpToolbar()
-//    }
-//
-//    private fun setUpToolbar() {
-//        toolbarLayout.visibility = View.GONE
-//    }
 }

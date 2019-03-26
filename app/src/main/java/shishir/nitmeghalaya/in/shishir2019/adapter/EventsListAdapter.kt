@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.models.ShishirEvent
+import shishir.nitmeghalaya.`in`.shishir2019.util.createForegroundGradient
+import shishir.nitmeghalaya.`in`.shishir2019.util.getImageResource
 import shishir.nitmeghalaya.`in`.shishir2019.util.getTitleTextColorForImage
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.EventsListItemViewHolder
 
-class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>,
-                        private val eventsGradientsList: ArrayList<GradientDrawable>?)
+class EventsListAdapter(private val context: Context,
+                        private val itemList: ArrayList<ShishirEvent>)
     : RecyclerView.Adapter<EventsListItemViewHolder>() {
+
+    init {
+        calculateForegroundGradientsForShishirEvents()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsListItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
@@ -23,8 +29,17 @@ class EventsListAdapter(private val itemList: ArrayList<ShishirEvent>,
 
     override fun onBindViewHolder(holder: EventsListItemViewHolder, position: Int) {
         val item = itemList[position]
-        item.foregroundGradient = eventsGradientsList?.get(position)
         holder.bind(item)
+    }
+
+    //It helps in preventing lag on switching to EventsListFragment
+    private fun calculateForegroundGradientsForShishirEvents() {
+        itemList.forEach {
+            it.foregroundGradient = createForegroundGradient(
+                context, getImageResource(context,
+                    if (it.image.isEmpty()) "krigg" else it.image) /*To prevent crash*/
+            )
+        }
     }
 
 }
