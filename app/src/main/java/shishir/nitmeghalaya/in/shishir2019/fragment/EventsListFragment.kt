@@ -17,7 +17,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.util.COLLECTION_EVENTS
 
 class EventsListFragment : Fragment() {
 
-    private lateinit var eventsList: ArrayList<ShishirEvent>
+    private var eventsList = arrayListOf<ShishirEvent>()
 
     companion object {
         @JvmStatic
