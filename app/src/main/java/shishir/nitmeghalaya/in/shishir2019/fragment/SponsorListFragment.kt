@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_sponsor_list.*
 import kotlinx.android.synthetic.main.fragment_sponsor_list.view.*
 
 import shishir.nitmeghalaya.`in`.shishir2019.R
@@ -76,7 +77,8 @@ class SponsorListFragment : Fragment() {
                     }
                 }
 
-                Log.v("List", sponsorList.toString())
+                loading_data_animation.visibility = View.GONE
+
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
             }
