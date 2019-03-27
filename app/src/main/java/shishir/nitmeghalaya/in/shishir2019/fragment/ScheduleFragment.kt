@@ -50,6 +50,7 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                     }
                 }
                 setUpViewPagerAndTabs(viewPager)
+                loading_data_animation.visibility = View.GONE
             }
     }
 
