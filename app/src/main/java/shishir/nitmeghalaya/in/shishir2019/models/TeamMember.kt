@@ -8,7 +8,7 @@ data class TeamMember(
         val post: String = "",
         val email: String = "",
         val contact: String = "",
-        val event: String = "",
         val image: String = "",
+        val team: String = "",
         var imageResId: Int = 0
 )
