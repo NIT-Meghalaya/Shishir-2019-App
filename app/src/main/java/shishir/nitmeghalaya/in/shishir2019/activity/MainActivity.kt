@@ -9,6 +9,9 @@ import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.SponsorListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.TeamFragment
+import com.google.android.material.appbar.AppBarLayout
+import kotlinx.android.synthetic.main.appbar_layout.view.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +30,10 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_placeholder, EventsListFragment.newInstance())
             .commit()
 
+        val params = appBar.toolbarLayout.layoutParams
+                as AppBarLayout.LayoutParams
+        params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
+                AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
         setUpBottomNavigation()
     }
 
@@ -49,6 +56,10 @@ class MainActivity : AppCompatActivity() {
                     R.id.action_events_list -> {
                         if (currentItem != 0) {
                             appBar.visibility = View.VISIBLE
+                            val params = appBar.toolbarLayout.layoutParams
+                                    as AppBarLayout.LayoutParams
+                            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
+                                    AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
                             ft.replace(R.id.fragment_placeholder, EventsListFragment.newInstance())
                         }
                     }
@@ -64,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                     R.id.action_team -> {
                         if (currentItem != 2) {
                             appBar.visibility = View.VISIBLE
+                            val params = appBar.toolbarLayout.layoutParams
+                                    as AppBarLayout.LayoutParams
+                            params.scrollFlags = 0
                             ft.replace(R.id.fragment_placeholder, TeamFragment.newInstance())
                                     .addToBackStack(FRAGMENT_TEAM)
                         }
@@ -72,6 +86,10 @@ class MainActivity : AppCompatActivity() {
                     R.id.action_sponsor-> {
                         if(currentItem != 3) {
                             appBar.visibility = View.VISIBLE
+                            val params = appBar.toolbarLayout.layoutParams
+                                    as AppBarLayout.LayoutParams
+                            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
+                                    AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
                             ft.replace(R.id.fragment_placeholder, SponsorListFragment.newInstance())
                                 .addToBackStack(FRAGMENT_SPONSORS)
                         }

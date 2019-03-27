@@ -18,7 +18,9 @@ class TeamMembersRecyclerViewAdapter(private val context: Context,
 
     init {
         teamMembers.forEach {
-            it.imageResId = getImageResource(context, it.image)
+
+            it.imageResId = if (it.image != "") getImageResource(context, it.image)
+                else R.drawable.shishir_logo
         }
     }
 
