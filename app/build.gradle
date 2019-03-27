@@ -78,6 +78,9 @@ dependencies {
 
     //Glide transformations
     implementation 'jp.wasabeef:glide-transformations:4.0.1'
+
+    //Folding Cell view
+    implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
 }
 
 //FireBase

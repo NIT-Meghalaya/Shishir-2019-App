@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Objective"
                 android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textColor="@color/white"
                 android:id="@+id/heading"/>
 
             <TextView
@@ -30,6 +31,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 tools:text="@tools:sample/lorem/random"
                 android:textSize="16sp"
+                android:textColor="@color/white"
                 android:scrollbars="vertical"
                 android:id="@+id/body"/>
 
@@ -40,6 +42,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/teamRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_10sdp"/>
 
 </LinearLayout>

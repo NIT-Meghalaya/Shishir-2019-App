@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="team_member_info_left_margin">@dimen/_10sdp</dimen>
+</resources>
