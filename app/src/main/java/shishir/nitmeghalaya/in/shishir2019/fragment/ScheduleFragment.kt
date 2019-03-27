@@ -43,17 +43,14 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
         db.collection("schedule").document("schedule").get()
             .addOnSuccessListener { documentSnapshot ->
                 val map = documentSnapshot.data
-                Log.v("data", map.toString())
                 map?.forEach {
                     when (it.key) {
                         DAY_1 -> scheduleDay1 = it.value as ArrayList<EventScheduleItem>
                         DAY_2 -> scheduleDay2 = it.value as ArrayList<EventScheduleItem>
                     }
                 }
-                Log.v("schedule1", scheduleDay1.toString())
-                Log.v("schedule2", scheduleDay2.toString())
-                //makeShortToast(context!!, "Schedule is ready !")
                 setUpViewPagerAndTabs(viewPager)
+                loading_data_animation.visibility = View.GONE
             }
     }
 

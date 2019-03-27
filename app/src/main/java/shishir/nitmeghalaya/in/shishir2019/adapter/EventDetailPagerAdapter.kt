@@ -26,7 +26,7 @@ class EventDetailPagerAdapter(private val event: ShishirEvent) : PagerAdapter() 
             heading.text = getPageTitle(position)
             if (position == 3) {
                 detailsView.visibility = View.GONE
-                teamRecyclerView.adapter = EventDetailsTeamMemebersAdapter(event.teamMembers)
+                teamRecyclerView.adapter = EventDetailsTeamMembersAdapter(context, event.teamMembers)
                 teamRecyclerView.layoutManager = LinearLayoutManager(context)
             } else {
                 body.text = fromHtml(when(position) {

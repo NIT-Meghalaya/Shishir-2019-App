@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_events_list.*
 import kotlinx.android.synthetic.main.fragment_events_list.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.EventsListAdapter
@@ -42,7 +43,10 @@ class EventsListFragment : Fragment() {
                     eventsList.add(document.toObject(ShishirEvent::class.java))
                 }
                 Log.v("List", eventsList.toString())
+
+
                 setUpRecyclerView(recyclerView)
+                loading_data_animation.visibility = View.GONE
             }
             .addOnFailureListener {
                 Log.v("error", "error")

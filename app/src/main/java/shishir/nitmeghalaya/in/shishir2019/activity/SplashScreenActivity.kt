@@ -9,7 +9,7 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 
 class SplashScreenActivity : AppCompatActivity() {
 
-    val SPLASH_TIME_OUT = 6000
+    val SPLASH_TIME_OUT = 6500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
