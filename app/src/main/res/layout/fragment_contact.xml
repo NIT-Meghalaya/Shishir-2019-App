@@ -32,13 +32,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:paddingLeft="@dimen/_20sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:src="@drawable/ic_location"/>
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/_30sdp"-->
+                <!--android:layout_height="@dimen/_30sdp"-->
+                <!--android:src="@drawable/ic_location"/>-->
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_data_animation"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:scaleType="centerCrop"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="location.json"
+                android:layout_gravity="center"
+                app:lottie_loop="true"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,40 +70,39 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_35sdp"
-            android:paddingLeft="@dimen/_10sdp">
+            android:layout_marginTop="@dimen/_30sdp">
 
-            <ImageButton
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
                 app:srcCompat="@drawable/ic_email"
                 android:background="@color/transparent"
                 android:id="@+id/btnEmail"/>
 
-            <ImageButton
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
                 app:srcCompat="@drawable/ic_www"
                 android:background="@color/transparent"
                 android:id="@+id/btnWebsite"/>
 
-            <ImageButton
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
                 app:srcCompat="@drawable/ic_facebook"
                 android:background="@color/transparent"
-                android:id="@+id/btnFacebook"/>
+             android:id="@+id/btnFacebook"/>
 
-            <ImageButton
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
                 app:srcCompat="@drawable/ic_instagram"
                 android:background="@color/transparent"
                 android:id="@+id/btnInstagram"/>
 
-            <ImageButton
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_30sdp"
                 app:srcCompat="@drawable/ic_youtube"
                 android:background="@color/transparent"
                 android:id="@+id/btnYoutube"/>
