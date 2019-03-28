@@ -6,27 +6,28 @@
         android:layout_height="match_parent">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/colorPrimary">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="@dimen/_10sdp">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/shishir_logo"
-                android:layout_gravity="center"
-                android:paddingTop="@dimen/_40sdp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shishir_logo"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/_40sdp"/>
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact Us"
-                android:textSize="@dimen/_32sdp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:paddingTop="@dimen/_10sdp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textSize="@dimen/_32sdp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/_10sdp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,10 +36,6 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:paddingLeft="@dimen/_20sdp">
 
-            <!--<ImageView-->
-                <!--android:layout_width="@dimen/_30sdp"-->
-                <!--android:layout_height="@dimen/_30sdp"-->
-                <!--android:src="@drawable/ic_location"/>-->
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/loading_data_animation"
@@ -70,7 +67,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_30sdp">
+            android:layout_marginTop="@dimen/_50sdp">
 
             <ImageView
                 android:layout_width="@dimen/_50sdp"
