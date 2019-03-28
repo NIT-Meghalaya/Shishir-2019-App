@@ -11,9 +11,10 @@ import shishir.nitmeghalaya.`in`.shishir2019.fragment.SponsorListFragment
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.TeamFragment
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.appbar_layout.view.*
+import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoadingAnimationController {
 
     companion object {
         const val FRAGMENT_EVENTS = "events"
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_placeholder, EventsListFragment.newInstance())
             .commit()
@@ -44,6 +44,14 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun hideLoadingAnimation() {
+        loading_data_animation.visibility = View.GONE
+    }
+
+    override fun showLoadingAnimation() {
+        loading_data_animation.visibility = View.VISIBLE
     }
 
     private fun setUpBottomNavigation() {

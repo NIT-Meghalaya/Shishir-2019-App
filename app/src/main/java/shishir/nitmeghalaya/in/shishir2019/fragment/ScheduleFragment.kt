@@ -1,5 +1,6 @@
 package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,23 +15,41 @@ import kotlinx.android.synthetic.main.fragment_schedule.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.SchedulePagerAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.EventScheduleItem
+import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_1
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_2
 import shishir.nitmeghalaya.`in`.shishir2019.util.makeShortToast
+import java.lang.RuntimeException
 
 class ScheduleFragment : Fragment(), ScheduleProvider {
 
+    private var animationController: LoadingAnimationController? = null
     var scheduleDay1 = arrayListOf<EventScheduleItem>()
+
     var scheduleDay2 = arrayListOf<EventScheduleItem>()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
+        animationController?.showLoadingAnimation()
         getScheduleFromDatabase(view.viewPager)
         return view
     }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if (activity is LoadingAnimationController)
+            animationController = activity as LoadingAnimationController
+        else
+            throw RuntimeException("Activity not a LoadingAnimationController")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        animationController = null
+    }
+
 
     override fun getSchedule(day: String) = when(day) {
              DAY_1 -> scheduleDay1
@@ -50,8 +69,10 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                     }
                 }
                 setUpViewPagerAndTabs(viewPager)
-                loading_data_animation.visibility = View.GONE
+                if (!isDetached)
+                    animationController?.hideLoadingAnimation()
             }
+
     }
 
     companion object {

@@ -18,48 +18,44 @@ import kotlinx.android.synthetic.main.fragment_sponsor_list.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.SponsorListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
+import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import shishir.nitmeghalaya.`in`.shishir2019.util.SPONSOR_LIST
 import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
 import shishir.nitmeghalaya.`in`.shishir2019.util.getListFromJson
 import shishir.nitmeghalaya.`in`.shishir2019.util.makeShortToast
+import java.lang.RuntimeException
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [SponsorListFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [SponsorListFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class SponsorListFragment : Fragment() {
 
     private var sponsorList = ArrayList<SponsorItem>()
-    val db = FirebaseFirestore.getInstance()
+    private var animationController: LoadingAnimationController? = null
 
+    val db = FirebaseFirestore.getInstance()
     companion object {
         @JvmStatic
         fun newInstance() = SponsorListFragment()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle? ): View
-    {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
         val view = inflater.inflate(R.layout.fragment_sponsor_list, container, false)
+        animationController?.showLoadingAnimation()
         getSponsors(view)
 
         return view
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if (activity is LoadingAnimationController)
+            animationController = activity as LoadingAnimationController
+        else
+            throw RuntimeException("Activity not a LoadingAnimationController")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        animationController = null
     }
 
     private fun getSponsors(view: View) {
@@ -76,9 +72,8 @@ class SponsorListFragment : Fragment() {
                         adapter = SponsorListAdapter(sponsorList)
                     }
                 }
-
-                loading_data_animation.visibility = View.GONE
-
+                if (!isDetached)
+                    animationController?.hideLoadingAnimation()
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
             }
