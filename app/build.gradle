@@ -81,6 +81,9 @@ dependencies {
 
     //Folding Cell view
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
+
+    //Intro Slider
+    implementation 'com.github.AppIntro:AppIntro:5.1.0'
 }
 
 //FireBase

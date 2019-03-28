@@ -1,5 +1,6 @@
 package shishir.nitmeghalaya.`in`.shishir2019.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,11 @@ import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.appbar_layout.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.*
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
+import android.preference.PreferenceManager
+
+
+
+
 
 
 class MainActivity : AppCompatActivity(), LoadingAnimationController {
@@ -24,6 +30,23 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val t = Thread(Runnable {
+            val getPrefs = PreferenceManager
+                .getDefaultSharedPreferences(baseContext)
+
+            val isFirstStart = getPrefs.getBoolean("firstStart", true)
+
+            if (isFirstStart) {
+                val i = Intent(this@MainActivity, IntroSliderActivity::class.java)
+                runOnUiThread { startActivity(i) }
+                val e = getPrefs.edit()
+                e.putBoolean("firstStart", false)
+                e.apply()
+            }
+        })
+        t.start()
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_placeholder, EventsListFragment.newInstance())
             .commit()
