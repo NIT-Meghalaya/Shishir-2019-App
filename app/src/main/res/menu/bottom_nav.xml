@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_monetization_on_black_24dp"
         android:title="Sponsors"/>
 
+    <item
+        android:id="@+id/action_contact"
+        android:icon="@drawable/ic_public_black_24dp"
+        android:title="Contact"/>
+
 </menu>

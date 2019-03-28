@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shishir_logo"
+                android:layout_gravity="center"
+                android:paddingTop="@dimen/_40sdp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Us"
+                android:textSize="@dimen/_32sdp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:paddingTop="@dimen/_10sdp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:paddingLeft="@dimen/_20sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/institute_logo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="@string/institute_address"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/_6sdp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:paddingLeft="@dimen/_10sdp">
+
+            <ImageButton
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:srcCompat="@drawable/ic_email"
+                android:background="@color/transparent"
+                android:id="@+id/btnEmail"/>
+
+            <ImageButton
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:srcCompat="@drawable/ic_www"
+                android:background="@color/transparent"
+                android:id="@+id/btnWebsite"/>
+
+            <ImageButton
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:srcCompat="@drawable/ic_facebook"
+                android:background="@color/transparent"
+                android:id="@+id/btnFacebook"/>
+
+            <ImageButton
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:srcCompat="@drawable/ic_instagram"
+                android:background="@color/transparent"
+                android:id="@+id/btnInstagram"/>
+
+            <ImageButton
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:srcCompat="@drawable/ic_youtube"
+                android:background="@color/transparent"
+                android:id="@+id/btnYoutube"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

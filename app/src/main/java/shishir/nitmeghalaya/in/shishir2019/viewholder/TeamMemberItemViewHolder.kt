@@ -15,7 +15,7 @@ class TeamMemberItemViewHolder(view: View): BaseViewHolder(view) {
 
         view.apply {
             name.text = item.name
-            post.text = item.post
+            post.text = "${item.post} (${item.team})"
             email.text = item.email
             contact.text = item.contact
             Glide.with(view).load(item.imageResId).into(memberImageView)

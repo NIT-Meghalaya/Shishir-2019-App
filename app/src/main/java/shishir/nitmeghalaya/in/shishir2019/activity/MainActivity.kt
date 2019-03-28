@@ -5,12 +5,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
-import shishir.nitmeghalaya.`in`.shishir2019.fragment.EventsListFragment
-import shishir.nitmeghalaya.`in`.shishir2019.fragment.ScheduleFragment
-import shishir.nitmeghalaya.`in`.shishir2019.fragment.SponsorListFragment
-import shishir.nitmeghalaya.`in`.shishir2019.fragment.TeamFragment
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.appbar_layout.view.*
+import shishir.nitmeghalaya.`in`.shishir2019.fragment.*
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 
 
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
         const val FRAGMENT_SCHEDULE = "shedule"
         const val FRAGMENT_TEAM = "team"
         const val FRAGMENT_SPONSORS = "sponsors"
+        const val FRAGMENT_CONTACT = "contact"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +98,18 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
                                     AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
                             ft.replace(R.id.fragment_placeholder, SponsorListFragment.newInstance())
                                 .addToBackStack(FRAGMENT_SPONSORS)
+                        }
+                    }
+
+                    R.id.action_contact-> {
+                        if(currentItem != 4) {
+                            appBar.visibility = View.VISIBLE
+                            val params = appBar.toolbarLayout.layoutParams
+                                    as AppBarLayout.LayoutParams
+                            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
+                                    AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+                            ft.replace(R.id.fragment_placeholder, ContactFragment.newInstance())
+                                .addToBackStack(FRAGMENT_CONTACT)
                         }
                     }
                 }
