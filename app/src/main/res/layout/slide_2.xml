@@ -9,21 +9,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SLIDE 2"
+        android:text="PRONITE"
         android:textSize="24sp"
         android:textColor="#ffffff" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/loading_data_animation"
+        android:id="@+id/slideAnimation"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="slide1.json"
+        app:lottie_fileName="animation_2.json"
         android:layout_gravity="center"
         app:lottie_loop="true" android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/slideDescriptiom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:textAlignment="center"
+        android:text="A live musical performances by one of today's brightest stars."
+        android:textSize="18sp"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

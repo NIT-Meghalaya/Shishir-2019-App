@@ -7,10 +7,9 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/slideHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="STEP UP"
+        android:text="WELCOME"
         android:textSize="24sp"
         android:textColor="#ffffff" />
 
@@ -20,7 +19,7 @@
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="animation_3.json"
+        app:lottie_fileName="animation_0.json"
         android:layout_gravity="center"
         app:lottie_loop="true" android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -34,7 +33,7 @@
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp"
         android:textAlignment="center"
-        android:text="Dance on the random music being played and show your instincts to dance"
+        android:text="'SHISHIR' is the Annual Cultural Fest of the National Institute of Technology, Meghalaya."
         android:textSize="18sp"
         android:textColor="#ffffff" />
 
