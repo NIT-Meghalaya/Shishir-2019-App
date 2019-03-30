@@ -25,7 +25,7 @@
         app:lottie_loop="true" android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp" android:scaleX="2" android:scaleY="2"/>
 
     <TextView
         android:id="@+id/slideDescriptiom"
