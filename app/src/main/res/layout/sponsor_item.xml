@@ -15,21 +15,4 @@
             android:src="@drawable/krigg"
             android:id="@+id/sponsorImage" />
 
-    <TextView
-            tools:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sponsorTitle"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_24sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

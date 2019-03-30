@@ -19,7 +19,7 @@ class SponsorListItemViewHolder(view: View): BaseViewHolder(view) {
 //            item.imageUrl = "krigg"
 
         view.apply {
-            sponsorTitle.text = item.name
+//            sponsorTitle.text = item.name
 
             val options = RequestOptions().placeholder(R.drawable.krigg)
             Glide.with(this).load(item.imageUrl).apply(options).into(sponsorImage)
