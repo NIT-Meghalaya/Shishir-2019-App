@@ -12,11 +12,6 @@ import shishir.nitmeghalaya.`in`.shishir2019.fragment.*
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import android.preference.PreferenceManager
 
-
-
-
-
-
 class MainActivity : AppCompatActivity(), LoadingAnimationController {
 
     companion object {
@@ -68,10 +63,12 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
     }
 
     override fun hideLoadingAnimation() {
+        loading_data_animation.pauseAnimation()
         loading_data_animation.visibility = View.GONE
     }
 
     override fun showLoadingAnimation() {
+        loading_data_animation.playAnimation()
         loading_data_animation.visibility = View.VISIBLE
     }
 
