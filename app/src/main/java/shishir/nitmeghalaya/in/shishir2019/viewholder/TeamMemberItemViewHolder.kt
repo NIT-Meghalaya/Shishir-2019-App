@@ -4,14 +4,8 @@ import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_team_member.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.models.TeamMember
-import android.opengl.ETC1.getWidth
-import android.R.attr.x
 import android.content.Context
-import android.os.Build
-import android.view.Display
-import android.content.Context.WINDOW_SERVICE
 import android.graphics.Point
-import androidx.core.content.ContextCompat.getSystemService
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
