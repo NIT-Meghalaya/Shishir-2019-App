@@ -10,8 +10,8 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.TextView
-
-
+import android.content.Intent
+import android.net.Uri
 
 /**
  * Created by Devansh on 26/3/19.
@@ -20,7 +20,6 @@ class TeamMemberItemViewHolder(view: View): BaseViewHolder(view) {
 
     override fun bind(item: Any) {
         item as TeamMember
-
         view.apply {
             name.text = item.name
             animateTextView(name, view.context)
@@ -31,9 +30,21 @@ class TeamMemberItemViewHolder(view: View): BaseViewHolder(view) {
                 post.text = item.post
 
             email.text = item.email
+            email.setOnClickListener {
+                val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + item.email))
+                it.context.startActivity(intent)
+            }
             animateTextView(email, view.context)
 
-            contact.text = item.contact
+            if (item.contact.isNotEmpty()) {
+                contact.text = item.contact
+                contact.setOnClickListener {
+                    it.context.startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + item.contact)))
+                }
+            } else {
+                contact.visibility = View.GONE
+            }
+
             Glide.with(view).load(item.imageResId).into(memberImageView)
         }
     }
