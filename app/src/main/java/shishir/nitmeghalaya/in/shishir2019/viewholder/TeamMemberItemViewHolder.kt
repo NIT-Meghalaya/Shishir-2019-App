@@ -29,12 +29,16 @@ class TeamMemberItemViewHolder(view: View): BaseViewHolder(view) {
             else
                 post.text = item.post
 
-            email.text = item.email
-            email.setOnClickListener {
-                val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + item.email))
-                it.context.startActivity(intent)
+            if (item.email.isNotEmpty()) {
+                email.text = item.email
+                email.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + item.email))
+                    it.context.startActivity(intent)
+                }
+                animateTextView(email, view.context)
+            } else {
+                email.visibility = View.GONE
             }
-            animateTextView(email, view.context)
 
             if (item.contact.isNotEmpty()) {
                 contact.text = item.contact
