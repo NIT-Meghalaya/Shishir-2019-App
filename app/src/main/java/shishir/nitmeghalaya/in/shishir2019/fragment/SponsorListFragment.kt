@@ -61,7 +61,7 @@ class SponsorListFragment : Fragment() {
     private fun getSponsors(view: View) {
         db.collection(SPONSOR_LIST).get()
             .addOnSuccessListener {
-                makeShortToast(context!!,"loaded")
+//                makeShortToast(context!!,"loaded")
                 for (document in it) {
                     sponsorList.add(document.toObject(SponsorItem::class.java))
                 }

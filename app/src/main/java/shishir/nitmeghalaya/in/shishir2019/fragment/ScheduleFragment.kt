@@ -19,7 +19,6 @@ import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_1
 import shishir.nitmeghalaya.`in`.shishir2019.util.ScheduleProvider.Companion.DAY_2
-import shishir.nitmeghalaya.`in`.shishir2019.util.makeShortToast
 import java.lang.RuntimeException
 
 class ScheduleFragment : Fragment(), ScheduleProvider {

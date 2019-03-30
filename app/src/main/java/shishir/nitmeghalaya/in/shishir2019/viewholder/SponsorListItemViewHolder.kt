@@ -21,7 +21,7 @@ class SponsorListItemViewHolder(view: View): BaseViewHolder(view) {
         view.apply {
 //            sponsorTitle.text = item.name
 
-            val options = RequestOptions().placeholder(R.drawable.shishir_logo)
+            val options = RequestOptions().placeholder(R.drawable.loading)
             Glide.with(this).load(item.imageUrl).apply(options).into(sponsorImage)
 
         }
