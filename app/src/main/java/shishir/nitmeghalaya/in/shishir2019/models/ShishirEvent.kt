@@ -11,5 +11,6 @@ data class ShishirEvent (
     @Transient var foregroundGradient: GradientDrawable? = null,
     var titleTextColor: Int = 0,
     val teamMembers: List<TeamMember> = listOf(),
-    var imageResId: Int = 0
+    var imageResId: Int = 0,
+    val priority: Long = 0
 )

@@ -60,6 +60,9 @@ class EventsListFragment : Fragment() {
                 for (document in it) {
                     eventsList.add(document.toObject(ShishirEvent::class.java))
                 }
+                eventsList.sortBy {shishirEvent ->
+                    shishirEvent.priority
+                }
                 Log.v("List", eventsList.toString())
 
                 setUpRecyclerView(recyclerView)

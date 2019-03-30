@@ -12,7 +12,7 @@
         android:layout_marginBottom="@dimen/_6sdp"
         app:cardCornerRadius="@dimen/_4sdp"
         app:strokeWidth="@dimen/_1sdp"
-        app:strokeColor="#61092B">
+        app:strokeColor="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,17 +33,20 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_marginLeft="@dimen/team_member_info_left_margin"
+            app:layout_constraintWidth_max="wrap"
+            app:layout_constraintWidth_percent="0.7"
             app:layout_constraintBottom_toTopOf="@+id/post"
             app:layout_constraintStart_toEndOf="@+id/memberImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem"
+            style="@style/ScrollableTextViewOnLongText"/>
 
         <TextView
             android:id="@+id/post"
@@ -69,7 +72,7 @@
             app:layout_constraintBottom_toTopOf="@+id/contact"
             app:layout_constraintStart_toEndOf="@+id/memberImageView"
             app:layout_constraintTop_toBottomOf="@+id/post"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem"/>
 
         <TextView
             android:id="@+id/contact"
@@ -86,12 +89,5 @@
             app:layout_constraintTop_toBottomOf="@+id/email"
             tools:text="@tools:sample/lorem" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

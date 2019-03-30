@@ -66,11 +66,15 @@ class SponsorListFragment : Fragment() {
                     sponsorList.add(document.toObject(SponsorItem::class.java))
                 }
 
-                view.apply {
-                    sponsorsListRecyclerView.apply {
-                        layoutManager = LinearLayoutManager(context)
-                        adapter = SponsorListAdapter(sponsorList)
+                if (sponsorList.size > 0) {
+                    view.apply {
+                        sponsorsListRecyclerView.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter = SponsorListAdapter(sponsorList)
+                        }
                     }
+                } else {
+                    view.noSponsorsLayout.visibility = View.VISIBLE
                 }
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()

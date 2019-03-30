@@ -19,6 +19,7 @@ class EventDetailActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_detail)
+        window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
 
         shishirEvent = Gson().fromJson(intent.getStringExtra(EVENT_DATA), ShishirEvent::class.java)
         shishirEvent.imageResId = getImageResource(this, shishirEvent.image)
