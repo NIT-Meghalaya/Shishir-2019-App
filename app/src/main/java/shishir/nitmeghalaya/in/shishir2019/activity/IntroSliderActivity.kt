@@ -19,8 +19,6 @@ class IntroSliderActivity : AppIntro2() {
 
         showStatusBar(true)
         showSkipButton(false)
-
-
     }
 
 //    override fun onSkipPressed() {

@@ -12,7 +12,7 @@
         android:layout_marginBottom="@dimen/_6sdp"
         app:cardCornerRadius="@dimen/_4sdp"
         app:strokeWidth="@dimen/_1sdp"
-        app:strokeColor="#61092B">
+        app:strokeColor="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -43,7 +43,8 @@
             app:layout_constraintStart_toEndOf="@+id/memberImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem"
+            style="@style/ScrollableTextViewOnLongText"/>
 
         <TextView
             android:id="@+id/post"
@@ -69,7 +70,8 @@
             app:layout_constraintBottom_toTopOf="@+id/contact"
             app:layout_constraintStart_toEndOf="@+id/memberImageView"
             app:layout_constraintTop_toBottomOf="@+id/post"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem"
+            style="@style/ScrollableTextViewOnLongText"/>
 
         <TextView
             android:id="@+id/contact"

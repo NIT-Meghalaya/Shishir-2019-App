@@ -15,8 +15,16 @@ class TeamMemberItemViewHolder(view: View): BaseViewHolder(view) {
 
         view.apply {
             name.text = item.name
-            post.text = "${item.post} (${item.team})"
+            name.isSelected = true
+
+            if (item.team.isNotEmpty())
+                post.text = "${item.post} (${item.team})"
+            else
+                post.text = item.post
+
             email.text = item.email
+            email.isSelected = true
+
             contact.text = item.contact
             Glide.with(view).load(item.imageResId).into(memberImageView)
         }
