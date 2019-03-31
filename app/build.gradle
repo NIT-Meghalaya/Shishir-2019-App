@@ -85,6 +85,9 @@ dependencies {
     //Intro Slider
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
 
+    //Firebase messaging
+    implementation 'com.google.firebase:firebase-messaging:17.5.0'
+
     //Material Design
     api 'com.android.support:design:28.0.0'
 }
