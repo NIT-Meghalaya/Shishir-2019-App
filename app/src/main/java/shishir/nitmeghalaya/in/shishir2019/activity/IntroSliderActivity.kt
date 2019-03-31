@@ -10,6 +10,7 @@ class IntroSliderActivity : AppIntro2() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
 
         addSlide(SampleSlide.newInstance(R.layout.slide_0))
         addSlide(SampleSlide.newInstance(R.layout.slide_1))

@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
-        Log.d("Instance ID", FirebaseInstanceId.getInstance().getId())
+
+        //Log.d("Instance ID", FirebaseInstanceId.getInstance().getId())
+
         val t = Thread(Runnable {
             val getPrefs = PreferenceManager
                 .getDefaultSharedPreferences(baseContext)
