@@ -22,21 +22,9 @@ class IntroSliderActivity : AppIntro2() {
         showSkipButton(false)
     }
 
-//    override fun onSkipPressed() {
-//        // Do something when users tap on Skip button.
-//    }
-//
-//    override fun onNextPressed() {
-//        // Do something when users tap on Next button.
-//    }
-//
     override fun onDonePressed(currentFragment: Fragment) {
         // Do something when users tap on Done button.
         super.onDonePressed(currentFragment)
         finish()
     }
-//
-//    override fun onSlideChanged() {
-//        // Do something when slide is changed
-//    }
 }
