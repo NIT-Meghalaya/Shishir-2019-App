@@ -1,6 +1,8 @@
 package shishir.nitmeghalaya.`in`.shishir2019.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -34,9 +36,30 @@ class EventDetailActivity:AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home ->
                 onBackPressed()
+
+            R.id.share -> {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+
+                val text = "Check out _"+ shishirEvent.name + "_ and other awesome events.\n\n"+
+                "*NIT Meghalaya* welcomes you to its annual cultural festival:\n\n" +
+                        resources.getString(R.string.shishir_emoji)
+
+                val appLink = "\n\nInstall the official app now:\n"+
+                "https://play.google.com/store/apps/details?id=shishir.nitmeghalaya.in.shishir2019"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, text + appLink)
+
+                shareIntent.type = "text/html"
+
+                startActivity(Intent.createChooser(shareIntent, "Spread the word..."))
+            }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.item_share, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setUpViews() {

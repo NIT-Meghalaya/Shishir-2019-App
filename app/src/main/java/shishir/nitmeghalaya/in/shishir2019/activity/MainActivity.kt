@@ -12,7 +12,10 @@ import shishir.nitmeghalaya.`in`.shishir2019.fragment.*
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import android.preference.PreferenceManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import com.google.firebase.iid.FirebaseInstanceId
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 class MainActivity : AppCompatActivity(), LoadingAnimationController {
 
@@ -56,6 +59,7 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
         params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or
                 AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
         setUpBottomNavigation()
+        setUpShareOption()
     }
 
     override fun onBackPressed() {
@@ -75,6 +79,51 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
     override fun showLoadingAnimation() {
         loading_data_animation.playAnimation()
         loading_data_animation.visibility = View.VISIBLE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.share -> {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+
+                val text = "*NIT Meghalaya* welcomes you to its annual cultural festival:\n\n" +
+                        resources.getString(R.string.shishir_emoji)
+
+                val appLink = "\n\nInstall the official app now:\n"+
+                        "https://play.google.com/store/apps/details?id=shishir.nitmeghalaya.in.shishir2019"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, text + appLink)
+
+                shareIntent.type = "text/html"
+
+                startActivity(Intent.createChooser(shareIntent, "Spread the word..."))
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.item_share, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setUpShareOption() {
+
+        appBar.toolbarLayout.shareButton.setOnClickListener {
+
+            val shareIntent = Intent(Intent.ACTION_SEND)
+
+            val text = "*NIT Meghalaya* welcomes you to its annual cultural festival:\n\n" +
+                    resources.getString(R.string.shishir_emoji)
+
+            val appLink = "\n\nInstall the official app now:\n" +
+                    "https://play.google.com/store/apps/details?id=shishir.nitmeghalaya.in.shishir2019"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, text + appLink)
+
+            shareIntent.type = "text/html"
+
+            startActivity(Intent.createChooser(shareIntent, "Spread the word..."))
+        }
     }
 
     private fun setUpBottomNavigation() {

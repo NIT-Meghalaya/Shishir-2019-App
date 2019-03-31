@@ -10,14 +10,27 @@
     app:layout_scrollFlags="scroll|enterAlways"
     android:gravity="center_horizontal">
 
-    <ImageView
-        android:id="@+id/titleImage"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:src="@drawable/actionbar_logo"
-        android:scaleType="fitCenter"
-        android:paddingTop="@dimen/_4sdp"
-        android:paddingBottom="@dimen/_4sdp" />
+        android:layout_height="?attr/actionBarSize">
+        <ImageView
+            android:id="@+id/titleImage"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:src="@drawable/actionbar_logo"
+            android:scaleType="fitCenter"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp" />
+
+        <ImageButton
+            android:id="@+id/shareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_share"
+            android:background="@color/transparent"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_gravity="right"/>
+    </FrameLayout>
 
 </androidx.appcompat.widget.Toolbar>
 
