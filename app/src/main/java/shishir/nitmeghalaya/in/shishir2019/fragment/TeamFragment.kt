@@ -3,6 +3,7 @@ package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,10 +55,11 @@ class TeamFragment : Fragment() {
 
 
     private fun getTeamMembersFromDatabase(recyclerView: RecyclerView) {
+        var teamMembersList: ArrayList<TeamMember> = arrayListOf()
+
         val db = FirebaseFirestore.getInstance()
         db.collection("coreTeams").document("teamMembers").get()
                 .addOnSuccessListener {documentSnapshot ->
-                    var teamMembersList: ArrayList<TeamMember> = arrayListOf()
                     documentSnapshot.data?.forEach {
                         teamMembersList = makeTeamMembersList(it.value as ArrayList<TeamMember>)
                     }
@@ -67,6 +69,19 @@ class TeamFragment : Fragment() {
                     }
                     if (!isDetached)
                         animationController?.hideLoadingAnimation()
+
+                    teamMembersList.add(22, TeamMember("Shakti Mayank Singh", "Coordinator", "b16ee012@gmail.com", "9485145900", "", "Sponsorship"))
+                    teamMembersList.add(23, TeamMember("Kishan Chaurasia", "Coordinator", "kishancool9596@gmail.com", "8853328589", "", "Sponsorship"))
+                    teamMembersList.add(24, TeamMember("Ashutosh Behra", "Coordinator", "beheraasutosh132@gmail.com", "7978707771", "", "Sponsorship"))
+                    teamMembersList.add(25, TeamMember("Priyesh Singh", "Co-coordinator", "b17ce028@nitm.ac", "8318744968", "", "Sponsorship"))
+                    teamMembersList.add(26, TeamMember("Saurabh Yadav", "Co-coordinator", "b17ce026@nitm.ac.in", "7985997229", "", "Sponsorship"))
+
+                    val map = mutableMapOf<String, ArrayList<TeamMember>>()
+                    map["members"] = teamMembersList
+                    db.collection("coreTeams").document("teamMembers").set(map)
+                        .addOnSuccessListener {
+                            Log.v("data added", teamMembersList.toString())
+                        }
                 }
     }
 
