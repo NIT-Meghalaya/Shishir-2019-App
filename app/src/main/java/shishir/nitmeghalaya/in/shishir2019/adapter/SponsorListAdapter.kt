@@ -8,6 +8,11 @@ import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.SponsorListItemViewHolder
 
 class SponsorListAdapter (private val sponsorList:ArrayList<SponsorItem>):RecyclerView.Adapter<SponsorListItemViewHolder>(){
+
+    companion object {
+        public const val TYPE_HEADING = "heading"
+    }
+
     override fun getItemCount(): Int {
         return sponsorList.size
     }
