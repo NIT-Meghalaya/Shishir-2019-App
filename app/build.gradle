@@ -88,6 +88,9 @@ dependencies {
     //Firebase messaging
     implementation 'com.google.firebase:firebase-messaging:17.5.0'
 
+    //InApp Messaging
+    implementation 'com.google.firebase:firebase-inappmessaging-display:17.1.1'
+
     //Material Design
     api 'com.android.support:design:28.0.0'
 }

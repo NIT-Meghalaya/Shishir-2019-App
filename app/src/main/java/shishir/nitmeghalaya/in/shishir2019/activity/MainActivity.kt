@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.appbar_layout.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.fragment.*
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import android.preference.PreferenceManager
+import android.util.Log
+import com.google.firebase.iid.FirebaseInstanceId
 
 class MainActivity : AppCompatActivity(), LoadingAnimationController {
 
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity(), LoadingAnimationController {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
-
+        Log.d("Instance ID", FirebaseInstanceId.getInstance().getId())
         val t = Thread(Runnable {
             val getPrefs = PreferenceManager
                 .getDefaultSharedPreferences(baseContext)
