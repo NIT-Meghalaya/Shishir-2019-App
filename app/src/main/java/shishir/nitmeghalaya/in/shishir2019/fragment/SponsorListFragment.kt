@@ -16,6 +16,7 @@ import com.google.gson.Gson
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.SponsorListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
+import shishir.nitmeghalaya.`in`.shishir2019.models.TeamMember
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
 import shishir.nitmeghalaya.`in`.shishir2019.util.getListFromJson
@@ -76,6 +77,14 @@ class SponsorListFragment : Fragment() {
 //                }
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()
+
+//                sponsorList.add(1, SponsorItem("Swiggy", type = "inAssociationWith"))
+//                val map = mutableMapOf<String, ArrayList<SponsorItem>>()
+//                map["sponsors"] = sponsorList
+//                db.collection("newSponsors").document("sponsors").set(map)
+//                    .addOnSuccessListener {
+//                        Log.v("data added", sponsorList.toString())
+//                    }
 
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
