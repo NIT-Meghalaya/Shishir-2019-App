@@ -3,6 +3,7 @@ package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,10 +55,11 @@ class TeamFragment : Fragment() {
 
 
     private fun getTeamMembersFromDatabase(recyclerView: RecyclerView) {
+        var teamMembersList: ArrayList<TeamMember> = arrayListOf()
+
         val db = FirebaseFirestore.getInstance()
         db.collection("coreTeams").document("teamMembers").get()
                 .addOnSuccessListener {documentSnapshot ->
-                    var teamMembersList: ArrayList<TeamMember> = arrayListOf()
                     documentSnapshot.data?.forEach {
                         teamMembersList = makeTeamMembersList(it.value as ArrayList<TeamMember>)
                     }
@@ -67,6 +69,13 @@ class TeamFragment : Fragment() {
                     }
                     if (!isDetached)
                         animationController?.hideLoadingAnimation()
+//
+//                    val map = mutableMapOf<String, ArrayList<TeamMember>>()
+//                    map["members"] = teamMembersList
+//                    db.collection("coreTeams").document("teamMembers").set(map)
+//                        .addOnSuccessListener {
+//                            Log.v("data added", teamMembersList.toString())
+//                        }
                 }
     }
 

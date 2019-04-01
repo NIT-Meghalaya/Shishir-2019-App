@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_sponsor_list.view.*
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.SponsorListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
+import shishir.nitmeghalaya.`in`.shishir2019.models.TeamMember
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
 import shishir.nitmeghalaya.`in`.shishir2019.util.SPONSOR_LIST
 import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
@@ -78,13 +79,91 @@ class SponsorListFragment : Fragment() {
                 }
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()
+//
+                val map = mutableMapOf<String, ArrayList<SponsorItem>>()
+//                    map["sponsors"] = sponsorList
+//                    db.collection("updatedSponsors").document("sponsors").set(map)
+//                        .addOnSuccessListener {
+//                            Log.v("data added", sponsorList.toString())
+//                        }
+
+//                map["sponsors"] = sponsorList
+//                db.collection("backupSponsorsData").document("sponsorsbackup").set(map)
+//                    .addOnSuccessListener {
+//                        Log.v("data added", sponsorList.toString())
+//                    }
+
+                db.collection("updatedSponsors").document("sponsors").get()
+                    .addOnSuccessListener {documentSnapshot ->
+                        documentSnapshot.data?.forEach {
+                            sponsorList = makeList(it.value as ArrayList<SponsorItem>)
+                        }
+                        reorganiseSponsors(sponsorList)
+                    }
+
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
             }
-
-
     }
 
 
+    private fun reorganiseSponsors(sponsorsList: ArrayList<SponsorItem>) {
+        val printingPartners = arrayListOf<SponsorItem>()
+        val radioPartners = arrayListOf<SponsorItem>()
+        val decoratingPartners = arrayListOf<SponsorItem>()
+        val foodPartners = arrayListOf<SponsorItem>()
+        val hospitalityPartners = arrayListOf<SponsorItem>()
+        val mediaPartners = arrayListOf<SponsorItem>()
+        val fashionSponsors = arrayListOf<SponsorItem>()
+        val otherSponsors = arrayListOf<SponsorItem>()
+        val inAssociationWith = arrayListOf<SponsorItem>()
+
+        sponsorsList.forEach {
+            when(it.type) {
+                "printing" -> printingPartners.add(it)
+                "radio" -> radioPartners.add(it)
+                "decorating" -> decoratingPartners.add(it)
+                "food" -> foodPartners.add(it)
+                "hospitality" -> hospitalityPartners.add(it)
+                "media" -> mediaPartners.add(it)
+                "fashion" -> fashionSponsors.add(it)
+                "others" -> otherSponsors.add(it)
+                "inAssociationWith" -> inAssociationWith.add(it)
+            }
+        }
+
+        val newList = arrayListOf<SponsorItem>()
+        newList.add(0, SponsorItem("In Association With", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(inAssociationWith)
+        newList.add(SponsorItem("Printing Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(printingPartners)
+        newList.add(SponsorItem("Radio Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(radioPartners)
+        newList.add(SponsorItem("Decoration Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(decoratingPartners)
+        newList.add(SponsorItem("Food Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(foodPartners)
+        newList.add(SponsorItem("Hospitality Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(hospitalityPartners)
+        newList.add(SponsorItem("Media Partner", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(mediaPartners)
+        newList.add(SponsorItem("Fashion Sponsors", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(fashionSponsors)
+        newList.add(SponsorItem("Other Sponsors", type = SponsorListAdapter.TYPE_HEADING))
+        newList.addAll(otherSponsors)
+
+
+        val map = mutableMapOf<String, ArrayList<SponsorItem>>()
+        map["sponsors"] = newList
+        db.collection("newSponsors").document("sponsors").set(map)
+            .addOnSuccessListener {
+                Log.v("data added", newList.toString())
+            }
+    }
+
+    private fun makeList(listMap: ArrayList<SponsorItem>): ArrayList<SponsorItem> {
+        val json = Gson().getJsonFromList<ArrayList<SponsorItem>>(listMap)
+        return Gson().getListFromJson(json)
+    }
 }
 
