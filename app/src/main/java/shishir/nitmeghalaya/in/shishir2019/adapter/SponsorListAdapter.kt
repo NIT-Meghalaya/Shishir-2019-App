@@ -5,26 +5,40 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
+import shishir.nitmeghalaya.`in`.shishir2019.viewholder.SponsorItemViewHolder
+import shishir.nitmeghalaya.`in`.shishir2019.viewholder.SponsorListHeadingViewHolder
 import shishir.nitmeghalaya.`in`.shishir2019.viewholder.SponsorListItemViewHolder
 
-class SponsorListAdapter (private val sponsorList:ArrayList<SponsorItem>):RecyclerView.Adapter<SponsorListItemViewHolder>(){
+class SponsorListAdapter (private val sponsorList:ArrayList<SponsorItem>): RecyclerView.Adapter<SponsorItemViewHolder>(){
 
     companion object {
         public const val TYPE_HEADING = "heading"
+        private const val VIEW_TYPE_HEADING = 0
+        private const val VIEW_TYPE_SPONSOR = 1
     }
 
     override fun getItemCount(): Int {
         return sponsorList.size
     }
 
-    override fun onBindViewHolder(holder: SponsorListItemViewHolder, position: Int) {
-        val sponsor = sponsorList[position]
-        holder.bind(sponsor)
+    override fun onBindViewHolder(holder: SponsorItemViewHolder, position: Int) {
+        val sponsorItem = sponsorList[position]
+        if (holder.type == VIEW_TYPE_HEADING)
+            (holder as SponsorListHeadingViewHolder).bind(sponsorItem)
+        else if (holder.type == VIEW_TYPE_SPONSOR)
+            (holder as SponsorListItemViewHolder).bind(sponsorItem)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SponsorListItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.sponsor_item,parent,false)
-        return SponsorListItemViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        if (viewType == VIEW_TYPE_SPONSOR) {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.sponsor_item, parent, false)
+            SponsorListItemViewHolder(view, viewType)
+        } else {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.sponsor_heading_item, parent, false)
+            SponsorListHeadingViewHolder(view, viewType)
+        }
+
+    override fun getItemViewType(position: Int) = if (sponsorList[position].type == TYPE_HEADING) VIEW_TYPE_HEADING
+                                                    else VIEW_TYPE_SPONSOR
 
 }

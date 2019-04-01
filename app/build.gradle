@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.8'
 
     //Firestore
-    implementation 'com.google.firebase:firebase-firestore:18.1.0'
+    implementation 'com.google.firebase:firebase-firestore:18.2.0'
 
     //Palette API
     implementation 'androidx.palette:palette:1.0.0'

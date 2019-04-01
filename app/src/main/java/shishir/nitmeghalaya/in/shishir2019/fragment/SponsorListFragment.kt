@@ -1,29 +1,26 @@
 package shishir.nitmeghalaya.`in`.shishir2019.fragment
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_sponsor_list.*
-import kotlinx.android.synthetic.main.fragment_sponsor_list.view.*
 
 import shishir.nitmeghalaya.`in`.shishir2019.R
 import shishir.nitmeghalaya.`in`.shishir2019.adapter.SponsorListAdapter
 import shishir.nitmeghalaya.`in`.shishir2019.models.SponsorItem
-import shishir.nitmeghalaya.`in`.shishir2019.models.TeamMember
 import shishir.nitmeghalaya.`in`.shishir2019.uiutils.LoadingAnimationController
-import shishir.nitmeghalaya.`in`.shishir2019.util.SPONSOR_LIST
 import shishir.nitmeghalaya.`in`.shishir2019.util.getJsonFromList
 import shishir.nitmeghalaya.`in`.shishir2019.util.getListFromJson
 import shishir.nitmeghalaya.`in`.shishir2019.util.makeShortToast
+import shishir.nitmeghalaya.`in`.shishir2019.util.ui.VerticalItemDecoration
 import java.lang.RuntimeException
 
 class SponsorListFragment : Fragment() {
@@ -60,46 +57,25 @@ class SponsorListFragment : Fragment() {
     }
 
     private fun getSponsors(view: View) {
-        db.collection(SPONSOR_LIST).get()
-            .addOnSuccessListener {
-//                makeShortToast(context!!,"loaded")
-                for (document in it) {
-                    sponsorList.add(document.toObject(SponsorItem::class.java))
+        db.collection("newSponsors").document("sponsors").get()
+            .addOnSuccessListener {documentSnapshot ->
+                documentSnapshot.data?.forEach {
+                    sponsorList = makeList(it.value as ArrayList<SponsorItem>)
                 }
 
                 if (sponsorList.size > 0) {
+                    view as RecyclerView
                     view.apply {
-                        sponsorsListRecyclerView.apply {
-                            layoutManager = LinearLayoutManager(context)
-                            adapter = SponsorListAdapter(sponsorList)
-                        }
+                        layoutManager = LinearLayoutManager(context)
+                        adapter = SponsorListAdapter(sponsorList)
+                        addItemDecoration(VerticalItemDecoration())
                     }
-                } else {
-                    view.noSponsorsLayout.visibility = View.VISIBLE
                 }
+//                } else {
+//                    view.noSponsorsLayout.visibility = View.VISIBLE
+//                }
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()
-//
-                val map = mutableMapOf<String, ArrayList<SponsorItem>>()
-//                    map["sponsors"] = sponsorList
-//                    db.collection("updatedSponsors").document("sponsors").set(map)
-//                        .addOnSuccessListener {
-//                            Log.v("data added", sponsorList.toString())
-//                        }
-
-//                map["sponsors"] = sponsorList
-//                db.collection("backupSponsorsData").document("sponsorsbackup").set(map)
-//                    .addOnSuccessListener {
-//                        Log.v("data added", sponsorList.toString())
-//                    }
-
-                db.collection("updatedSponsors").document("sponsors").get()
-                    .addOnSuccessListener {documentSnapshot ->
-                        documentSnapshot.data?.forEach {
-                            sponsorList = makeList(it.value as ArrayList<SponsorItem>)
-                        }
-                        reorganiseSponsors(sponsorList)
-                    }
 
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
