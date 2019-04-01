@@ -58,7 +58,7 @@ class TeamFragment : Fragment() {
         var teamMembersList: ArrayList<TeamMember> = arrayListOf()
 
         val db = FirebaseFirestore.getInstance()
-        db.collection("coreTeams").document("teamMembers").get()
+        db.collection("coreTeams").document("newTeamMembers").get()
                 .addOnSuccessListener {documentSnapshot ->
                     documentSnapshot.data?.forEach {
                         teamMembersList = makeTeamMembersList(it.value as ArrayList<TeamMember>)
@@ -69,10 +69,10 @@ class TeamFragment : Fragment() {
                     }
                     if (!isDetached)
                         animationController?.hideLoadingAnimation()
-//
+
 //                    val map = mutableMapOf<String, ArrayList<TeamMember>>()
 //                    map["members"] = teamMembersList
-//                    db.collection("coreTeams").document("teamMembers").set(map)
+//                    db.collection("coreTeams").document("newTeamMembers").set(map)
 //                        .addOnSuccessListener {
 //                            Log.v("data added", teamMembersList.toString())
 //                        }
