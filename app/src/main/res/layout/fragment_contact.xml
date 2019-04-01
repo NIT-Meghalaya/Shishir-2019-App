@@ -90,20 +90,6 @@
                 android:background="@color/transparent"
              android:id="@+id/btnFacebook"/>
 
-            <ImageView
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:srcCompat="@drawable/ic_instagram"
-                android:background="@color/transparent"
-                android:id="@+id/btnInstagram"/>
-
-            <ImageView
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:srcCompat="@drawable/ic_youtube"
-                android:background="@color/transparent"
-                android:id="@+id/btnYoutube"/>
-
         </LinearLayout>
 
     </LinearLayout>

@@ -26,36 +26,22 @@ class ContactFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnEmail.setOnClickListener({
+        btnEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "shishir@nitm.ac.in", null))
             startActivity(Intent.createChooser(intent, "Choose an Email client :"))
-        })
+        }
 
-        btnWebsite.setOnClickListener({
+        btnWebsite.setOnClickListener {
             val uri = Uri.parse("http://nitmeghalaya.in/shishir/")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        })
+        }
 
-        btnFacebook.setOnClickListener({
+        btnFacebook.setOnClickListener {
             val uri = Uri.parse("https://www.facebook.com/shishir.nitm/")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        })
-
-//        btnInstagram.setOnClickListener({
-//            val uri = Uri.parse("http://www.nitmeghalaya.in/shishir/#")
-//            val intent = Intent(Intent.ACTION_VIEW, uri)
-//            startActivity(intent)
-//        })
-//
-//        btnYoutube.setOnClickListener({
-//            val uri = Uri.parse("http://www.nitmeghalaya.in/shishir/#")
-//            val intent = Intent(Intent.ACTION_VIEW, uri)
-//            startActivity(intent)
-//        })
-
-
+        }
     }
 
     companion object {
