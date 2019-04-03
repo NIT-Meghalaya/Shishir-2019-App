@@ -71,24 +71,6 @@ class ScheduleFragment : Fragment(), ScheduleProvider {
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()
 
-                scheduleDay1.clear()
-                scheduleDay1.add(EventScheduleItem("Inauguration", "10:00", "11:30", image = "shishir_logo"))
-                scheduleDay1.add(EventScheduleItem("SPIC MACAY", "11:30", "13:00", image = "spic_macay"))
-                scheduleDay1.add(EventScheduleItem("Rangoli", "14:00", "16:00", image = "rangoli"))
-                scheduleDay1.add(EventScheduleItem("Treasure Hunt", "14:00", "16:00", image = "treasure_hunt"))
-                scheduleDay1.add(EventScheduleItem("LAN Gaming", "14:00", "16:00", image = "lan_gaming"))
-                scheduleDay1.add(EventScheduleItem("Harmony", "16:00", "18:30", image = "harmony"))
-                scheduleDay1.add(EventScheduleItem("Pronite", "18:30", "21:00", image = "pronite"))
-
-                scheduleDay2.add(4, EventScheduleItem("Dramatics", "13:00", "14:00", "6th April", "dramatics"))
-                scheduleDay2.add(5, EventScheduleItem("Step Up", "14:00", "16:00", "6th April", "step_up"))
-
-                val mMap = mutableMapOf<String, ArrayList<EventScheduleItem>>()
-                mMap[DAY_2] = scheduleDay2
-                mMap[DAY_1] = scheduleDay1
-
-                Log.v("schedule", scheduleDay2.toString())
-                //db.collection("schedule").document("schedule").set(mMap)
             }
 
     }
