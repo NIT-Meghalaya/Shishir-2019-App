@@ -72,19 +72,8 @@ class SponsorListFragment : Fragment() {
                         addItemDecoration(VerticalItemDecoration())
                     }
                 }
-//                } else {
-//                    view.noSponsorsLayout.visibility = View.VISIBLE
-//                }
                 if (!isDetached)
                     animationController?.hideLoadingAnimation()
-
-//                sponsorList.add(1, SponsorItem("Swiggy", type = "inAssociationWith"))
-//                val map = mutableMapOf<String, ArrayList<SponsorItem>>()
-//                map["sponsors"] = sponsorList
-//                db.collection("newSponsors").document("sponsors").set(map)
-//                    .addOnSuccessListener {
-//                        Log.v("data added", sponsorList.toString())
-//                    }
 
             }.addOnFailureListener {
                 makeShortToast(context!!,"error")
