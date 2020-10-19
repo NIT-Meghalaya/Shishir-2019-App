@@ -38,13 +38,13 @@ class EventsListFragment : Fragment() {
         return view
     }
 
-//    override fun onAttach(context: Context?) {
-//        super.onAttach(context)
-//        if (activity is LoadingAnimationController)
-//            animationController = activity as LoadingAnimationController
-//        else
-//            throw RuntimeException("Activity not a LoadingAnimationController")
-//    }
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if (activity is LoadingAnimationController)
+            animationController = activity as LoadingAnimationController
+        else
+            throw RuntimeException("Activity not a LoadingAnimationController")
+    }
 
     override fun onDetach() {
         super.onDetach()

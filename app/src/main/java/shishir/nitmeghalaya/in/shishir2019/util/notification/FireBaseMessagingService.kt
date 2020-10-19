@@ -17,18 +17,18 @@ import shishir.nitmeghalaya.`in`.shishir2019.R
 
 class FireBaseMessagingService : FirebaseMessagingService() {
 
-//    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
-//        //Displaying data in log
-//        //It is optional
-//        Log.d(TAG, "Notification Message TITLE: " + remoteMessage!!.notification!!.title!!)
-//        Log.d(TAG, "Notification Message BODY: " + remoteMessage.notification!!.body!!)
-//        Log.d(TAG, "Notification Message DATA: " + remoteMessage.data.toString())
-//        //Calling method to generate notification
-//        sendNotification(
-//            remoteMessage.notification!!.title,
-//            remoteMessage.notification!!.body, remoteMessage.data
-//        )
-//    }
+    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+        //Displaying data in log
+        //It is optional
+        Log.d(TAG, "Notification Message TITLE: " + remoteMessage!!.notification!!.title!!)
+        Log.d(TAG, "Notification Message BODY: " + remoteMessage.notification!!.body!!)
+        Log.d(TAG, "Notification Message DATA: " + remoteMessage.data.toString())
+        //Calling method to generate notification
+        sendNotification(
+            remoteMessage.notification!!.title,
+            remoteMessage.notification!!.body, remoteMessage.data
+        )
+    }
 
     //This method is only generating push notification
     private fun sendNotification(messageTitle: String?, messageBody: String?, row: Map<String, String>) {
