@@ -15,7 +15,6 @@ This is the repository for the **official app of Shishir 2019**
 * Details about Sponsors
 * Links to other social media accounts of Shishir
 
-
 ## Development
  The app makes use of the following technologies:
 
@@ -29,3 +28,7 @@ This is the repository for the **official app of Shishir 2019**
  * **Glide** (for image loading)
  * **Gson** (as a JSON library for Kotlin)
  * **Intuit SDP** (as a different size unit)
+
+ ## Developers
+
+ * [Devansh Maurya](https://github.com/Devansh-Maurya)
