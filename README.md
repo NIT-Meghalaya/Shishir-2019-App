@@ -32,3 +32,5 @@ This is the repository for the **official app of Shishir 2019**
  ## Developers
 
  * [Devansh Maurya](https://github.com/Devansh-Maurya)
+ * [Laribok Syiemlieh](https://github.com/ichimichi)
+ * [Dave Syiemlieh](https://github.com/CodeVague)
