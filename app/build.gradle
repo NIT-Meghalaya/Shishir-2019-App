@@ -50,7 +50,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 
     //FireBase core
     implementation 'com.google.firebase:firebase-core:17.5.1'
