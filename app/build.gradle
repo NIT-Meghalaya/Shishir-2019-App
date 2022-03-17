@@ -74,7 +74,7 @@ dependencies {
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
 
     //Firebase messaging
-    implementation 'com.google.firebase:firebase-messaging:23.0.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.2'
 
     //InApp Messaging
     implementation 'com.google.firebase:firebase-inappmessaging-display:20.1.2'
