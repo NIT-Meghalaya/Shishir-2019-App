@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 
     //FireBase core
-    implementation 'com.google.firebase:firebase-core:20.1.2'
+    implementation 'com.google.firebase:firebase-core:21.0.0'
 
     //Firestore
     implementation 'com.google.firebase:firebase-firestore:24.1.2'
