@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
 
     // UI Testing
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     //Intuit SDP
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
